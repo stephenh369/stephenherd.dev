@@ -4,10 +4,15 @@ module.exports = {
   purge: ['./pages/**/*.{js, jsx}', './components/**/*.{js, jsx}'],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'hero': "url('~/public/hero.jpg')",
+      },
+    },
   },
   variants: {
-    extend: {},
+    extend: {
+    },
   },
   plugins: [
     plugin(function({ addBase, theme }) {
