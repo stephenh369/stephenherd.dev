@@ -8,6 +8,9 @@ module.exports = {
       backgroundImage: {
         'hero': "url('~/public/hero.jpg')",
       },
+      animation: {
+        'cursor': 'ping .65s ease-in-out infinite',
+       }
     },
   },
   variants: {
