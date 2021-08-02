@@ -8,8 +8,32 @@ module.exports = {
       backgroundImage: {
         'hero': "url('~/public/hero.jpg')",
       },
+      keyframes: {
+        'fade-in-right': {
+          '0%': {
+              opacity: '0',
+              transform: 'translateX(10px)'
+          },
+          '100%': {
+              opacity: '1',
+              transform: 'translateX(0)'
+          },
+        'fade-in-left': {
+          '0%': {
+              opacity: '1',
+              transform: 'translateX(-10px)'
+          },
+          '100%': {
+              opacity: '0',
+              transform: 'translateX(0)'
+          },
+        }
+      }
+    },
       animation: {
         'cursor': 'ping .65s ease-in-out infinite',
+        'fade-in-right': 'fade-in-right 0.5s ease-out',
+        'fade-in-left': 'fade-in-left 0.5s ease-out'
        }
     },
   },

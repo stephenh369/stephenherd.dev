@@ -8,6 +8,7 @@ export default function Nav() {
     const mobileBtn = document.querySelector('.mobile-button')
     mobileNav.classList.toggle('hidden')
     mobileNav.classList.toggle('flex')
+    mobileNav.classList.toggle('animate-fade-in-right')
     mobileBtn.classList.toggle('animate-pulse')
   }
 
