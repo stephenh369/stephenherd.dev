@@ -38,9 +38,9 @@ export default function Hero() {
 
   return (
     <div className="bg-hero bg-cover bg-center bg-no-repeat bg-blue-900 bg-opacity-50 bg-blend-overlay h-screen w-full flex items-center">
-      <div className="px-20">
-        <h1>Stephen Herd - Web Developer</h1>
-        <h3>I can build websites <span className="text-blue-400">{typing}</span><span className="animate-cursor text-blue-400">|</span></h3>
+      <div className="mx-16 p-4 rounded shadow-lg bg-gray-900 bg-opacity-50">
+        <h1 className="pt-2 pb-4">Stephen Herd - Web Developer</h1>
+        <h3 className="pb-4">I can build websites <span className="text-blue-400">{typing}</span><span className="animate-cursor text-blue-400">|</span></h3>
       </div>
     </div>
   )
