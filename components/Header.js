@@ -8,7 +8,7 @@ export default function Header() {
       <h1 className="py-2"><span className="text-blue-400">sh</span>.dev</h1>
       <Nav/>
     </header>
-    <header className="md:hidden fixed top-24 right-0 z-50 px-10 text-right">
+    <header className="md:hidden w-full fixed top-24 right-0 z-50 text-right">
       <NavMobile/>
     </header>
     </>
