@@ -5,6 +5,9 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      screens: {
+        xs: '500px',
+      },
       backgroundImage: {
         'hero': "url('~/public/hero.jpg')",
       },
