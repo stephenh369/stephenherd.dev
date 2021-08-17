@@ -11,7 +11,7 @@ const Layout = ({children}) => {
       <meta charSet="utf-8" />
       <title>sh.dev</title>
     </Head>
-    <main className="h-screen text-white">
+    <main className="h-screen text-white ">
       <Header />
       {children}
     </main>
