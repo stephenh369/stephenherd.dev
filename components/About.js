@@ -2,9 +2,10 @@ import Image from 'next/image'
 import aboutImg from '../public/about.jpg'
 
 export default function About() {
+
   return (
     <div id="about" className="h-100 p-10 md:p-20 bg-gradient-to-r from-blue-500 via-blue-700 to-blue-800 flex items-center flex-col">
-      <div className="bg-gray-200 overflow-hidden shadow-lg rounded sm:flex sm:flex-row md:max-h-96 md:max-w-3xl">
+      <div data-aos="fade-up" data-aos-easing="ease-in-out" className="bg-gray-200 overflow-hidden shadow-lg rounded sm:flex sm:flex-row md:max-h-96 md:max-w-3xl">
         <Image className="object-contain sm:object-cover py-4 w-full" src={aboutImg} alt="about image"/>
         <div className="flex flex-col justify-center py-4 sm:py-8 md:py-10 px-6">
           <h2 className="py-4 sm:pb-4 sm:pt-0 text-gray-700">About Me</h2>

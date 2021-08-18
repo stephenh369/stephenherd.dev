@@ -1,7 +1,15 @@
 import Head from 'next/head'
 import Header from './Header'
+import Aos from 'Aos'
+import 'aos/dist/aos.css'
+import { useEffect } from 'react'
 
 const Layout = ({children}) => {
+
+  useEffect(() => {
+    Aos.init({ duration: 500})
+  }, [])
+
   return (
     <>
     <Head>
@@ -11,7 +19,7 @@ const Layout = ({children}) => {
       <meta charSet="utf-8" />
       <title>sh.dev</title>
     </Head>
-    <main className="h-screen text-white ">
+    <main className="h-screen text-white">
       <Header />
       {children}
     </main>
