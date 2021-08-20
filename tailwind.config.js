@@ -1,10 +1,21 @@
 const plugin = require('tailwindcss/plugin')
+const colors = require('tailwindcss/colors')
 
 module.exports = {
   purge: ['./pages/**/*.{js, jsx}', './components/**/*.{js, jsx}'],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      colors: {
+        navy: {
+          400: '#18338c',
+          500: '#122669',
+          600: '#0c1a46',
+          700: '#091334',
+          800: '#060d23',
+          900: '#030611'
+        }
+      },
       screens: {
         xs: '500px',
       },
