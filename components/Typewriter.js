@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 
 export default function Typewriter() {
   const [typing, setTyping] = useState('')
-  const [words, setWords] = useState(['using custom code.', 'with WordPress.', 'that provide E-Commerce solutions.'])
+  const [words, setWords] = useState(['using custom code.', 'with WordPress.', 'for E-Commerce.'])
   const [index, setIndex] = useState(0)
   const [letterIndex, setLetterIndex] = useState(0)
  
