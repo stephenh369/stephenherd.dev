@@ -47,6 +47,14 @@ export default function Services() {
         </div>
       </div>
 
+      <div>
+        <div className="flex flex-col md:flex-row justify-evenly items-center py-8">
+          <Image layout="intrinsic" width={125} height={125} src={wordpressImg} alt="Wordpress Logo" />
+          <h2 className="pb-4">Wordpress</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elit duis tristique sollicitudin nibh sit amet commodo nulla. Quisque non tellus orci ac auctor augue. Lacinia quis vel eros donec ac odio tempor. Facilisis leo vel fringilla est ullamcorper.</p>
+        </div>
+      </div>
+
     </div>
   )
 }
