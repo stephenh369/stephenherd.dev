@@ -36,22 +36,36 @@ export default function Services() {
       </div>
 
       <div className="flex justify-evenly items-center h-100 max-w-screen-md m-auto">
+
         <div data-aos="fade-up" data-aos-anchor=".service-3" className="relative w-1/3 mr-4 md:pr-12 max-w-sm h-100">
           <Image layout="intrinsic" width={500} height={500} src={wordpressImg} alt="Wordpress Logo" />
         </div>
+
         <div data-aos="fade-up" data-aos-delay="250" data-aos-anchor=".service-3" className="relative w-1/3 md:px-6 max-w-sm h-100">
           <Image layout="intrinsic" width={512} height={179} src={wooImg} alt="Woocommerce Logo" />
         </div>
+
         <div data-aos="fade-up" data-aos-delay="500" data-aos-anchor=".service-3" className="relative w-1/3 ml-4 md:pl-12 max-w-sm h-100">
           <Image layout="intrinsic" width={388} height={227} src={codeImg} alt="Code Image" />
         </div>
+
       </div>
 
       <div>
-        <div className="flex flex-col md:flex-row justify-evenly items-center py-8">
-          <Image layout="intrinsic" width={125} height={125} src={wordpressImg} alt="Wordpress Logo" />
-          <h2 className="pb-4">Wordpress</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elit duis tristique sollicitudin nibh sit amet commodo nulla. Quisque non tellus orci ac auctor augue. Lacinia quis vel eros donec ac odio tempor. Facilisis leo vel fringilla est ullamcorper.</p>
+
+        <div className="flex flex-col md:flex-row justify-evenly items-center pt-16 pb-8 md:py-16">
+          <Image layout="intrinsic" width={250} height={250} src={wordpressImg} alt="Wordpress Logo" />
+          <p className="md:pl-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elit duis tristique sollicitudin nibh sit amet commodo nulla. Quisque non tellus orci ac auctor augue. Lacinia quis vel eros donec ac odio tempor. Facilisis leo vel fringilla est ullamcorper.</p>
+        </div>
+
+        <div className="flex flex-col md:flex-row justify-evenly items-center pt-8 pb-16 md:py-16">
+          <Image layout="intrinsic" width={500} height={250} src={wooImg} alt="Woocommerce Logo" />
+          <p className="md:pl-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elit duis tristique sollicitudin nibh sit amet commodo nulla. Quisque non tellus orci ac auctor augue. Lacinia quis vel eros donec ac odio tempor. Facilisis leo vel fringilla est ullamcorper.</p>
+        </div>
+
+        <div className="flex flex-col md:flex-row justify-evenly items-center pt-8 pb-16 md:py-16">
+          <Image layout="intrinsic" width={350} height={250} src={codeImg} alt="html/css/js Logo" />
+          <p className="pt-8 md:pl-8 md:pt-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elit duis tristique sollicitudin nibh sit amet commodo nulla. Quisque non tellus orci ac auctor augue. Lacinia quis vel eros donec ac odio tempor. Facilisis leo vel fringilla est ullamcorper.</p>
         </div>
       </div>
 
