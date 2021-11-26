@@ -14,6 +14,11 @@ module.exports = {
           700: '#091334',
           800: '#060d23',
           900: '#030611'
+        },
+        project: {
+          react: '#61DBFB',
+          dobble: '#8d538d',
+          engineRoom: '#820C02'
         }
       },
       screens: {
@@ -48,7 +53,8 @@ module.exports = {
         'cursor': 'ping .65s ease-in-out infinite',
         'fade-in-right': 'fade-in-right 0.5s ease-out',
         'fade-in-left': 'fade-in-left 0.5s ease-out'
-       }
+       },
+
     },
   },
   variants: {
