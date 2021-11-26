@@ -13,7 +13,7 @@ export default function Portfolio() {
         </div>
         <div className="flex flex-col sm:flex-row justify-evenly items-center h-full w-full py-8">
 
-          <div data-aos="flip-right" data-aos-delay="100" className="flex flex-row sm:flex-col w-full sm:h-48 sm:w-64 mb-4 sm:mb-0 bg-project-react shadow-lg cursor-pointer">
+          <div data-aos="flip-right" data-aos-delay="100" className="flex flex-row sm:flex-col w-full sm:h-48 sm:w-44 md:w-64 mb-4 sm:mb-0 bg-project-react shadow-lg cursor-pointer">
             
             <div className="p-4">
               <Image loading="eager" className="object-contain w-full" src={reactSynthImg} alt="project 1 image"/>
@@ -25,7 +25,7 @@ export default function Portfolio() {
 
           </div>
 
-          <div data-aos="flip-right" data-aos-delay="500" className="flex flex-row sm:flex-col w-full sm:h-48 sm:w-64 bg-project-dobble shadow-lg cursor-pointer">
+          <div data-aos="flip-right" data-aos-delay="500" className="flex flex-row sm:flex-col w-full sm:h-48 sm:w-44 md:w-64 bg-project-dobble shadow-lg cursor-pointer">
             
             <div className="p-4">
               <Image loading="eager" className="object-contain w-full" src={dobbleImg} alt="project 2 image"/>
@@ -37,7 +37,7 @@ export default function Portfolio() {
 
           </div>
 
-          <div data-aos="flip-right" data-aos-delay="1000" className="flex flex-row sm:flex-col w-full sm:h-48 sm:w-64 mt-4 sm:mt-0 bg-project-engineRoom shadow-lg cursor-pointer">
+          <div data-aos="flip-right" data-aos-delay="1000" className="flex flex-row sm:flex-col w-full sm:h-48 sm:w-44 md:w-64 mt-4 sm:mt-0 bg-project-engineRoom shadow-lg cursor-pointer">
             
             <div className="p-4">
               <Image loading="eager" className="object-contain w-full" src={engineRoomImg} alt="project 3 image"/>

@@ -54,17 +54,23 @@ export default function Services() {
       <div>
 
         <div className="flex flex-col md:flex-row justify-evenly items-center pt-16 pb-8 md:py-16">
-          <Image layout="intrinsic" width={250} height={250} src={wordpressImg} alt="Wordpress Logo" />
+          <div className="px-8 sm:px-0">
+            <Image layout="intrinsic" width={250} height={250} src={wordpressImg} alt="Wordpress Logo" />
+          </div>
           <p className="md:pl-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elit duis tristique sollicitudin nibh sit amet commodo nulla. Quisque non tellus orci ac auctor augue. Lacinia quis vel eros donec ac odio tempor. Facilisis leo vel fringilla est ullamcorper.</p>
         </div>
 
         <div className="flex flex-col md:flex-row justify-evenly items-center pt-8 pb-16 md:py-16">
-          <Image layout="intrinsic" width={500} height={250} src={wooImg} alt="Woocommerce Logo" />
+          <div className="px-8 sm:px-0">
+            <Image layout="intrinsic" width={500} height={250} src={wooImg} alt="Woocommerce Logo" />
+          </div>
           <p className="md:pl-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elit duis tristique sollicitudin nibh sit amet commodo nulla. Quisque non tellus orci ac auctor augue. Lacinia quis vel eros donec ac odio tempor. Facilisis leo vel fringilla est ullamcorper.</p>
         </div>
 
         <div className="flex flex-col md:flex-row justify-evenly items-center pt-8 pb-16 md:py-16">
-          <Image layout="intrinsic" width={350} height={250} src={codeImg} alt="html/css/js Logo" />
+          <div className="px-8 sm:px-0">
+            <Image layout="intrinsic" width={350} height={250} src={codeImg} alt="html/css/js Logo" />
+          </div>
           <p className="pt-8 md:pl-8 md:pt-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elit duis tristique sollicitudin nibh sit amet commodo nulla. Quisque non tellus orci ac auctor augue. Lacinia quis vel eros donec ac odio tempor. Facilisis leo vel fringilla est ullamcorper.</p>
         </div>
       </div>
