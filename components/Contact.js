@@ -25,7 +25,7 @@ export default function Contact() {
           </div>
 
           <div className="flex justify-center w-full pt-16">
-            <button className="bg-blue-500 text-gray-900 border-2 border-gray-900 py-8 px-24" type="submit">Submit</button>
+            <button className="bg-blue-400 text-gray-900 border-2 border-gray-900 py-8 px-24" type="submit">Submit</button>
           </div>
   
         </form>
