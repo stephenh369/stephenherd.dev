@@ -2,7 +2,7 @@ export default function Contact() {
 
 
   return (
-    <div id="contact" className="h-100 p-10 md:p-20 bg-indigo-700">
+    <div id="contact" className="h-100 px-10 py-20 md:p-20 bg-indigo-700">
       <div className="w-full h-full">
         <div className="flex flex-col text-center justify-center pb-8">
           <h1>Contact</h1>

@@ -6,7 +6,7 @@ import codeImg from '../public/code.png'
 export default function Services() {
 
   return (
-    <div id="services" className="h-100 p-10 md:p-20 bg-gradient-to-r from-navy-500 via-navy-400 to-blue-800">
+    <div id="services" className="h-100 px-10 py-20 md:p-20 bg-gradient-to-r from-navy-500 via-navy-400 to-blue-800">
       <div className="flex flex-col justify-between max-w-screen-md m-auto h-96">
         <div className="flex flex-row justify-center">
           <h1>Services</h1>
@@ -57,21 +57,21 @@ export default function Services() {
           <div className="px-16 md:px-0">
             <Image layout="intrinsic" width={250} height={250} src={wordpressImg} alt="Wordpress Logo" />
           </div>
-          <p className="px-8 pb-8 md:pl-8 md:pr-0 md:pb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elit duis tristique sollicitudin nibh sit amet commodo nulla. Quisque non tellus orci ac auctor augue. Lacinia quis vel eros donec ac odio tempor. Facilisis leo vel fringilla est ullamcorper.</p>
+          <p className="p-8 md:pl-8 md:pr-0 md:py-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elit duis tristique sollicitudin nibh sit amet commodo nulla. Quisque non tellus orci ac auctor augue. Lacinia quis vel eros donec ac odio tempor. Facilisis leo vel fringilla est ullamcorper.</p>
         </div>
 
-        <div className="flex flex-col md:flex-row justify-evenly items-center py-8 pb-16 md:py-16 md:px-8 border-2 border-gray-900 bg-purple-400 bg-opacity-50">
+        <div className="flex flex-col md:flex-row justify-evenly items-center py-16 md:px-8 border-2 border-gray-900 bg-purple-400 bg-opacity-50">
           <div className="px-16 md:px-0">
             <Image layout="intrinsic" width={500} height={250} src={wooImg} alt="Woocommerce Logo" />
           </div>
-          <p className="px-8 pb-8 md:pl-4 md:pr-0 md:pb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elit duis tristique sollicitudin nibh sit amet commodo nulla. Quisque non tellus orci ac auctor augue. Lacinia quis vel eros donec ac odio tempor. Facilisis leo vel fringilla est ullamcorper.</p>
+          <p className="p-8 md:pl-4 md:pr-0 md:py-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elit duis tristique sollicitudin nibh sit amet commodo nulla. Quisque non tellus orci ac auctor augue. Lacinia quis vel eros donec ac odio tempor. Facilisis leo vel fringilla est ullamcorper.</p>
         </div>
 
-        <div className="flex flex-col md:flex-row justify-evenly items-center py-8 pb-16 md:py-16 md:px-8 border-2 border-gray-900 bg-green-400 bg-opacity-50 mt-8">
+        <div className="flex flex-col md:flex-row justify-evenly items-center py-16 md:px-8 border-2 border-gray-900 bg-green-400 bg-opacity-50 mt-8">
           <div className="px-16 md:px-0">
             <Image layout="intrinsic" width={350} height={250} src={codeImg} alt="html/css/js Logo" />
           </div>
-          <p className="px-8 pb-8 md:pl-8 md:pr-0 md:pb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elit duis tristique sollicitudin nibh sit amet commodo nulla. Quisque non tellus orci ac auctor augue. Lacinia quis vel eros donec ac odio tempor. Facilisis leo vel fringilla est ullamcorper.</p>
+          <p className="p-8 md:pl-8 md:pr-0 md:py-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elit duis tristique sollicitudin nibh sit amet commodo nulla. Quisque non tellus orci ac auctor augue. Lacinia quis vel eros donec ac odio tempor. Facilisis leo vel fringilla est ullamcorper.</p>
         </div>
       </div>
 

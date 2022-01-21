@@ -4,7 +4,7 @@ import aboutImg from '../public/about.jpg'
 export default function About() {
 
   return (
-    <div id="about" className="overflow-hidden h-100 p-10 md:p-20 bg-gradient-to-r from-blue-500 via-blue-700 to-blue-800 flex items-center flex-col">
+    <div id="about" className="overflow-hidden h-100 px-10 py-20 md:p-20 bg-gradient-to-r from-blue-500 via-blue-700 to-blue-800 flex items-center flex-col">
       <div data-aos="fade-left" data-aos-easing="ease-in-out" className="bg-gray-200 overflow-hidden shadow-lg rounded sm:flex sm:flex-row md:max-h-96 md:max-w-3xl">
         <Image className="object-contain sm:object-cover py-4 w-full" src={aboutImg} alt="about image"/>
         <div className="flex flex-col justify-center py-4 sm:pb-8 md:pb-10 px-6">
