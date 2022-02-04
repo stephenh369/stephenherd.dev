@@ -43,15 +43,15 @@ export default function Portfolio() {
   }, [projectOne, projectTwo, projectThree])
 
   return (
-    <div id="portfolio" className="relative h-100 px-10 py-20 md:py-20 bg-gradient-to-r from-navy-500 via-navy-600 to-navy-800">
+    <div id="portfolio" className={`relative ${overlayActive() ? "h-screen" : "h-100"} px-10 pt-20 pb-40 md:py-20 bg-gradient-to-r from-navy-500 via-navy-600 to-navy-800`}>
 
-      { projectOne ? <> <Overlay project='project one'/> <button className='absolute z-101' onClick={handleProjectOne}>CLOSE</button> </> :
-        projectTwo ? <> <Overlay project='project two'/> <button className='absolute z-101' onClick={handleProjectTwo}>CLOSE</button> </> :
-        projectThree ? <> <Overlay project='project three'/> <button className='absolute z-101' onClick={handleProjectThree}>CLOSE</button> </> : null }
+      { projectOne ? <> <Overlay project='project one'/> <button className='absolute top-16 md:top-20 left-10 md:left-20 z-101' onClick={handleProjectOne}>CLOSE</button> </> :
+        projectTwo ? <> <Overlay project='project two'/> <button className='absolute top-16 md:top-20 left-10 md:left-20 z-101' onClick={handleProjectTwo}>CLOSE</button> </> :
+        projectThree ? <> <Overlay project='project three'/> <button className='absolute top-16 md:top-20 left-10 md:left-20 z-101' onClick={handleProjectThree}>CLOSE</button> </> : null }
 
       <div className="flex flex-col w-100 h-full sm:h-96">
         <div className="flex flex-row justify-center pb-8">
-          <h1>Portfolio</h1>
+          { overlayActive() ? null : <h1>Portfolio</h1> }
         </div>
         <div className="flex flex-col sm:flex-row justify-evenly items-center h-full w-full py-8">
 
