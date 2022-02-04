@@ -45,9 +45,12 @@ export default function Portfolio() {
   return (
     <div id="portfolio" className={`relative ${overlayActive() ? "h-screen" : "h-100"} px-10 pt-20 pb-40 md:py-20 bg-gradient-to-r from-navy-500 via-navy-600 to-navy-800`}>
 
-      { projectOne ? <> <Overlay project='project one'/> <button className='absolute top-16 md:top-20 left-10 md:left-20 z-101' onClick={handleProjectOne}>CLOSE</button> </> :
-        projectTwo ? <> <Overlay project='project two'/> <button className='absolute top-16 md:top-20 left-10 md:left-20 z-101' onClick={handleProjectTwo}>CLOSE</button> </> :
-        projectThree ? <> <Overlay project='project three'/> <button className='absolute top-16 md:top-20 left-10 md:left-20 z-101' onClick={handleProjectThree}>CLOSE</button> </> : null }
+      { projectOne ? <> <Overlay project='project one'/> <button className='absolute cursor-pointer top-16 md:top-20 left-10 md:left-20 z-101 bg-red-600 text-gray-900' onClick={handleProjectOne}>
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+        <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+        </svg></button> </> :
+        projectTwo ? <> <Overlay project='project two'/> <button className='absolute cursor-pointer top-16 md:top-20 left-10 md:left-20 z-101' onClick={handleProjectTwo}>X</button> </> :
+        projectThree ? <> <Overlay project='project three'/> <button className='absolute cursor-pointer top-16 md:top-20 left-10 md:left-20 z-101' onClick={handleProjectThree}>X</button> </> : null }
 
       <div className="flex flex-col w-100 h-full sm:h-96">
         <div className="flex flex-row justify-center pb-8">
