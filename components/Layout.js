@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Header from './Header'
+import Footer from './Footer'
 import Aos from 'Aos'
 import 'aos/dist/aos.css'
 import { useEffect } from 'react'
@@ -22,6 +23,7 @@ const Layout = ({children}) => {
     <main id="main" className="h-screen text-white">
       <Header />
       {children}
+      <Footer />
     </main>
     </>
   )
