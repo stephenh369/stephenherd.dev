@@ -12,6 +12,7 @@ export default function Contact() {
           name="contact-form"
           method="POST"
           action="contact/?success=true"
+          data-netlify="true"
         >
           <div className="grid grid-cols-2 gap-4 w-full">
             <label className="pb-8" htmlFor="name">Name: </label>
@@ -26,6 +27,10 @@ export default function Contact() {
 
           <div className="flex justify-center w-full pt-16">
             <button className="bg-blue-400 text-gray-900 border-2 border-gray-900 py-8 px-24" type="submit">Submit</button>
+          </div>
+
+          <div className="flex justify-end align-middle pt-8">
+            <a href="mailto:contact@stephenherd.dev" target="_blank">You can also email me directly at <span className="text-blue-400">contact@stephenherd.dev</span></a>
           </div>
   
         </form>
