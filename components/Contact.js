@@ -30,7 +30,7 @@ export default function Contact() {
           </div>
 
           <div className="flex justify-end align-middle pt-8">
-            <a href="mailto:contact@stephenherd.dev" target="_blank">You can also email me directly at <span className="text-blue-400">contact@stephenherd.dev</span></a>
+            <a href="mailto:contact@stephenherd.dev" target="_blank" rel="noreferrer">You can also email me directly at <span className="text-blue-400">contact@stephenherd.dev</span></a>
           </div>
   
         </form>

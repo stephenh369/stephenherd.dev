@@ -59,7 +59,7 @@ export default function Services() {
             <h2 className="text-center">WordPress</h2>
           </div>
           <p className="p-8 md:pl-8 md:pr-0 md:py-0">This is the ideal choice if you just want to throw up a small website quickly that advertises your business, a bit like a digital business card.  A WordPress website also comes with admin functionality so that you can potentially manage your own content! This would be ideal for writing a blog or articles.
-          <br/><br/><strong>Disadvantages:</strong> WordPress doesn't come with much functionality out of the box, and relies on third party "plugins" to provide functionality to them. Often times these need to be updated to ensure security and stability of the website. The more plugins you add can also slow down the website which may discourage users. 
+          <br/><br/><strong>Disadvantages:</strong> WordPress doesn&apos;t come with much functionality out of the box, and relies on third party &quotplugins&quot to provide functionality to them. Often times these need to be updated to ensure security and stability of the website. The more plugins you add can also slow down the website which may discourage users. 
           Finally, most high-quality plugins normally come at a cost.</p>
         </div>
 
@@ -77,7 +77,7 @@ export default function Services() {
             <Image layout="intrinsic" width={350} height={250} src={codeImg} alt="html/css/js Logo" />
             <h2 className="text-center">Custom</h2>
           </div>
-          <p className="p-8 md:pl-8 md:pr-0 md:py-0">A custom built website will be the best solution for any more specific and/or tricky requirements. It will also be the preference for those who don't want to rely on a number of third party developers to keep the sites functionality up to date. Building a website with code from scratch will also produce a website with much better performance than your average WordPress website.
+          <p className="p-8 md:pl-8 md:pr-0 md:py-0">A custom built website will be the best solution for any more specific and/or tricky requirements. It will also be the preference for those who don&apos;t want to rely on a number of third party developers to keep the sites functionality up to date. Building a website with code from scratch will also produce a website with much better performance than your average WordPress website.
           <br/><br/><strong>Disadvantages:</strong> Generally will take a bit longer to develop than a WordPress website as the code has to be written from the ground up. By default this will also not come with a CMS (Content Management System) unless requested.</p>
         </div>
       </div>
