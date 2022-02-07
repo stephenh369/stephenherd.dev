@@ -1,15 +1,18 @@
 import Head from 'next/head'
 import Header from './Header'
 import Footer from './Footer'
-import Aos from 'Aos'
 import 'aos/dist/aos.css'
 import { useEffect } from 'react'
 
 const Layout = ({children}) => {
+  let Aos;
 
   useEffect(() => {
+    const Aos = require("aos"); 
     Aos.init({ duration: 500})
   }, [])
+
+  useEffect(() => { if (Aos) { Aos.refresh(); } });
 
   return (
     <>
