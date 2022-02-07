@@ -56,22 +56,29 @@ export default function Services() {
         <div className="flex flex-col md:flex-row justify-evenly items-center py-8 md:py-16 md:px-8 border-2 border-gray-900  bg-blue-500 bg-opacity-50 my-8">
           <div className="px-16 md:px-0">
             <Image layout="intrinsic" width={250} height={250} src={wordpressImg} alt="Wordpress Logo" />
+            <h2 className="text-center">WordPress</h2>
           </div>
-          <p className="p-8 md:pl-8 md:pr-0 md:py-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elit duis tristique sollicitudin nibh sit amet commodo nulla. Quisque non tellus orci ac auctor augue. Lacinia quis vel eros donec ac odio tempor. Facilisis leo vel fringilla est ullamcorper.</p>
+          <p className="p-8 md:pl-8 md:pr-0 md:py-0">This is the ideal choice if you just want to throw up a small website quickly that advertises your business, a bit like a digital business card.  A WordPress website also comes with admin functionality so that you can potentially manage your own content! This would be ideal for writing a blog or articles.
+          <br/><br/><strong>Disadvantages:</strong> WordPress doesn't come with much functionality out of the box, and relies on third party "plugins" to provide functionality to them. Often times these need to be updated to ensure security and stability of the website. The more plugins you add can also slow down the website which may discourage users. 
+          Finally, most high-quality plugins normally come at a cost.</p>
         </div>
 
         <div className="flex flex-col md:flex-row justify-evenly items-center py-16 md:px-8 border-2 border-gray-900 bg-purple-400 bg-opacity-50">
           <div className="px-16 md:px-0">
             <Image layout="intrinsic" width={500} height={250} src={wooImg} alt="Woocommerce Logo" />
+            <h3 className="text-center">E-Commerce for WordPress</h3>
           </div>
-          <p className="p-8 md:pl-4 md:pr-0 md:py-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elit duis tristique sollicitudin nibh sit amet commodo nulla. Quisque non tellus orci ac auctor augue. Lacinia quis vel eros donec ac odio tempor. Facilisis leo vel fringilla est ullamcorper.</p>
+          <p className="p-8 md:pl-4 md:pr-0 md:py-0">Need an online shop? WooCommerce provides shop functionality to your WordPress website. It is one of the quickest and easiest ways to set up a shop online. The platform is highly configurable and has a lot of support from the development community. With WordPress being its own content management system, it is super easy to manage your inventory, orders, and customers.
+          <br/><br/><strong>Disadvantages:</strong> These are much the same as a regular WordPress site. A lot of WooCommerce functionality comes from third party plugins at an additional cost depending on your needs. The base installation is relatively bare bones.</p>
         </div>
 
         <div className="flex flex-col md:flex-row justify-evenly items-center py-16 md:px-8 border-2 border-gray-900 bg-green-400 bg-opacity-50 mt-8">
           <div className="px-16 md:px-0">
             <Image layout="intrinsic" width={350} height={250} src={codeImg} alt="html/css/js Logo" />
+            <h2 className="text-center">Custom</h2>
           </div>
-          <p className="p-8 md:pl-8 md:pr-0 md:py-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elit duis tristique sollicitudin nibh sit amet commodo nulla. Quisque non tellus orci ac auctor augue. Lacinia quis vel eros donec ac odio tempor. Facilisis leo vel fringilla est ullamcorper.</p>
+          <p className="p-8 md:pl-8 md:pr-0 md:py-0">A custom built website will be the best solution for any more specific and/or tricky requirements. It will also be the preference for those who don't want to rely on a number of third party developers to keep the sites functionality up to date. Building a website with code from scratch will also produce a website with much better performance than your average WordPress website.
+          <br/><br/><strong>Disadvantages:</strong> Generally will take a bit longer to develop than a WordPress website as the code has to be written from the ground up. By default this will also not come with a CMS (Content Management System) unless requested.</p>
         </div>
       </div>
 
