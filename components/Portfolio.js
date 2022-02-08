@@ -40,12 +40,12 @@ export default function Portfolio() {
 
   const active = useCallback(() => {
     overlayActive()
-  }, [projectOne, projectTwo, projectThree, overlayActive]);
+  }, [overlayActive])
   
 
   useEffect(() => {
-    overlayActive()
-  }, [active, overlayActive])
+    active
+  }, [active])
 
   return (
     <div id="portfolio" className={`relative ${overlayActive() ? "h-screen" : "h-100"} px-10 pt-20 pb-40 md:py-20 bg-gradient-to-r from-navy-500 via-navy-600 to-navy-800`}>
