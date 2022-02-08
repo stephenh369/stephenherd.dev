@@ -11,7 +11,6 @@ export default function Contact() {
           className="pt-8"
           name="contact-form"
           method="POST"
-          action="contact/?success=true"
           data-netlify="true"
         >
           <div className="grid grid-cols-2 gap-4 w-full">
