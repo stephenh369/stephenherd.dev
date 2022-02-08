@@ -2,7 +2,7 @@ import Image from 'next/image'
 import reactSynthImg from '../public/react_synth.png'
 import dobbleImg from '../public/dobble.png'
 import engineRoomImg from '../public/engine_room.png'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import Overlay from './Overlay'
 
 export default function Portfolio() {
@@ -38,9 +38,14 @@ export default function Portfolio() {
 
   const overlayActive = () => [projectOne, projectTwo, projectThree].some((project) => project)
 
+  const active = useCallback(() => {
+    overlayActive()
+  }, [projectOne, projectTwo, projectThree, overlayActive]);
+  
+
   useEffect(() => {
     overlayActive()
-  }, [projectOne, projectTwo, projectThree, overlayActive])
+  }, [active, overlayActive])
 
   return (
     <div id="portfolio" className={`relative ${overlayActive() ? "h-screen" : "h-100"} px-10 pt-20 pb-40 md:py-20 bg-gradient-to-r from-navy-500 via-navy-600 to-navy-800`}>
