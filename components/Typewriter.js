@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 
 export default function Typewriter() {
   const [typing, setTyping] = useState('')
@@ -14,7 +14,7 @@ export default function Typewriter() {
      } else setIndex(index + 1)
   }
  
-  const handleTyping = () => {
+  const handleTyping = useCallback(() => {
    if(letterIndex < words[index].length) {
      setTimeout(() => {
        if (letterIndex === 0) {
@@ -29,11 +29,11 @@ export default function Typewriter() {
        handleClear()
      }, 2000)
    } 
- }
+ }, [index, letterIndex])
  
   useEffect(() => {
     handleTyping()
- }, [index, letterIndex]);
+ }, [handleTyping])
 
   return (
     <div className="h-20 xs:h-8 md:h-full mb-2 xs:mb-4">
