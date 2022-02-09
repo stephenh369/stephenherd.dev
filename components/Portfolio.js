@@ -70,7 +70,7 @@ export default function Portfolio() {
           <h1>Portfolio</h1> 
         </div>
         <div className="flex flex-col justify-center items-center w-full h-full max-w-2xl p-10 bg-gray-900 bg-opacity-50"> 
-          <p>Here you'll find some personal projects of mine from my early days of learning to code that I'm particularly proud of. If nothing else, they demonstrate the kind of things you can create on the web. More than just websites!</p>
+          <p>Here you&apos;ll find some personal projects of mine from my early days of learning to code that I&apos;m particularly proud of. If nothing else, they demonstrate the kind of things you can create on the web. More than just websites!</p>
         </div>
       </> }
 
