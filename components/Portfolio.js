@@ -48,7 +48,7 @@ export default function Portfolio() {
   }, [active])
 
   return (
-    <div id="portfolio" className={`relative ${overlayActive() ? "h-screen" : "h-100"} px-10 pt-20 pb-40 md:py-20 bg-gradient-to-r from-navy-500 via-navy-600 to-navy-800`}>
+    <div id="portfolio" className={`relative ${overlayActive() ? "h-screen" : "h-100"} px-10 pt-20 pb-40 bg-gradient-to-r from-navy-500 via-navy-600 to-navy-800`}>
 
       { projectOne ? <> <Overlay project='project one'/> <button className='absolute flex items-center cursor-pointer top-16 md:top-20 right-10 md:right-20 h-8 z-101 bg-red-600 text-gray-900' onClick={handleProjectOne}>
         <p className="inline">CLOSE</p><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 inline" viewBox="0 0 20 20" fill="currentColor">
@@ -58,9 +58,16 @@ export default function Portfolio() {
         projectThree ? <> <Overlay project='project three'/> <button className='absolute cursor-pointer top-16 md:top-20 right-10 md:right-20 z-101' onClick={handleProjectThree}>X</button> </> : null }
 
       <div className="flex flex-col items-center w-100 h-full sm:h-96">
+
+      { overlayActive() ? null : <>
         <div className="flex flex-row justify-center pb-8">
-          { overlayActive() ? null : <h1>Portfolio</h1> }
+          <h1>Portfolio</h1> 
         </div>
+        <div className="flex flex-col justify-center items-center w-full h-full max-w-2xl p-10 bg-gray-900 bg-opacity-50"> 
+          <p>Here you'll find some personal projects of mine from my early days of learning to code that I'm particularly proud of. If nothing else, they demonstrate the kind of things you can create on the web. More than just websites!</p>
+        </div>
+      </> }
+
         <div className="flex flex-col sm:flex-row justify-evenly items-center h-full w-full max-w-6xl py-8">
 
          { overlayActive() ? null : <div onClick={handleProjectOne} data-aos="flip-right" data-aos-delay="100" className="flex flex-row sm:flex-col w-full sm:mr-8 sm:h-42 md:h-48 sm:w-44 md:w-64 mb-4 sm:mb-0 bg-project-react border-2 border-gray-900 shadow-lg cursor-pointer">
