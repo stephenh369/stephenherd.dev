@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import reactSynthImg from '../public/react_synth.png'
 import dobbleImg from '../public/dobble.png'
+import engineRoomImg from '../public/engine_room.png'
 
 export default function Overlay (props) {
 
@@ -45,8 +46,22 @@ export default function Overlay (props) {
 
         </div>
       ) : props.project === 'project three' ? (
-        <div className="absolute z-100 top-0 left-0 bottom-0 right-0 flex flex-col justify-center items-center w-100 h-100 bg-black bg-opacity-50">
-          <h1>PROJECT THREE OVERLAY</h1>
+        <div className="absolute z-100 top-0 left-0 bottom-0 right-0 flex flex-col md:flex-row justify-center items-center w-100 h-100 px-10 py-20 md:p-20 bg-black bg-opacity-50">
+          
+          <div className="flex flex-col md:pr-8 md:py-0 py-8">
+            <div className="flex flex-row items-end">
+              <h1 className="pb-4 pr-4">The Engine Room</h1>
+              
+            </div>
+
+            <p>This was my first personal project I created while I was studying at CodeClan. It is a simple CRUD app (Create, Read, Update, Delete) that models a interactive database for a car dealership.
+              <br/><br/>This web app was created using the Sinatra, the Ruby framework, coupled with a PostgresSQL database.</p>
+          </div>
+
+          <div data-aos="fade" data-aos-easing="ease-in-out" className="flex flex-col md:pl-4">
+            <Image loading="eager" className="object-contain w-full" src={engineRoomImg} alt="project 3 image"/>
+          </div>
+
         </div>
       ) : null }
     </>
