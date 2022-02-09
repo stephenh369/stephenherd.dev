@@ -51,19 +51,19 @@ export default function Services() {
 
       </div>
 
-      <div className="md:px-8">
+      <div className="flex flex-col items-center md:px-8">
 
-        <div className="flex flex-col lg:flex-row justify-evenly items-center py-8 md:py-16 md:px-16 lg:px-8 shadow-lg  bg-blue-500 bg-opacity-50 my-8">
+        <div className="flex flex-col lg:flex-row justify-evenly items-center py-8 md:py-16 md:px-16 lg:px-8 max-w-6xl shadow-lg  bg-blue-500 bg-opacity-50 my-8">
           <div className="text-center px-16 lg:px-6">
             <Image layout="intrinsic" width={250} height={250} src={wordpressImg} alt="Wordpress Logo" />
             <h2 className="text-center pt-6 pb-2 lg:py-0"><strong>WordPress</strong></h2>
           </div>
           <p className="p-8 lg:px-8 lg:py-4">This is the ideal choice if you just want to throw up a small website quickly that advertises your business, a bit like a digital business card.  A WordPress website also comes with admin functionality so that you can potentially manage your own content! This would be ideal for writing a blog or articles.
-          <br/><br/><strong>Disadvantages:</strong> WordPress doesn&apos;t come with much functionality out of the box, and relies on third party &quotplugins&quot to provide functionality to them. Often times these need to be updated to ensure security and stability of the website. The more plugins you add can also slow down the website which may discourage users. 
+          <br/><br/><strong>Disadvantages:</strong> WordPress doesn&apos;t come with much functionality out of the box, and relies on third party &quot;plugins&quot; to provide functionality to them. Often times these need to be updated to ensure security and stability of the website. The more plugins you add can also slow down the website which may discourage users. 
           Finally, most high-quality plugins normally come at a cost.</p>
         </div>
 
-        <div className="flex flex-col lg:flex-row justify-evenly items-center py-16 md:px-16 lg:px-8 shadow-lg bg-purple-400 bg-opacity-50">
+        <div className="flex flex-col lg:flex-row justify-evenly items-center py-16 md:px-16 lg:px-8 max-w-6xl shadow-lg bg-purple-400 bg-opacity-50">
           <div className="text-center lg:w-100 px-16 lg:px-8">
             <Image layout="intrinsic" width={200} height={200} src={wooImg} alt="Woocommerce Logo" />
             <h3 className="text-center pt-6 pb-2 lg:py-0"><strong>E-Commerce for WordPress</strong></h3>
@@ -72,7 +72,7 @@ export default function Services() {
           <br/><br/><strong>Disadvantages:</strong> These are much the same as a regular WordPress site. A lot of WooCommerce functionality comes from third party plugins at an additional cost depending on your needs. The base installation is relatively bare bones.</p>
         </div>
 
-        <div className="flex flex-col lg:flex-row justify-evenly items-center py-16 md:px-16 lg:px-8 shadow-lg bg-green-400 bg-opacity-50 mt-8">
+        <div className="flex flex-col lg:flex-row justify-evenly items-center py-16 md:px-16 lg:px-8 max-w-6xl shadow-lg bg-green-400 bg-opacity-50 mt-8">
           <div className="text-center lg:w-100 px-16 lg:px-10">
             <Image layout="intrinsic" width={200} height={200} src={codeImg} alt="html/css/js Logo" />
             <h2 className="text-center pt-12 pb-2 lg:pt-2 lg:pb-0"><strong>Custom</strong></h2>
