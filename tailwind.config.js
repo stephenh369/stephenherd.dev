@@ -25,7 +25,7 @@ module.exports = {
         xs: '500px',
       },
       backgroundImage: {
-        'hero': "url('~/public/hero.jpg')",
+        'hero': "url('~/public/hero.jpeg')",
       },
       keyframes: {
         'fade-in-right': {
