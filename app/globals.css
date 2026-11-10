@@ -169,6 +169,9 @@ html[data-view='3d'] [data-simple-view='pending'] {
   list-style: decimal;
   padding-left: 1.5em;
 }
+.prose-content li + li {
+  margin-top: 0.5em;
+}
 .prose-content img {
   border-radius: 0.375rem;
 }

@@ -8,7 +8,7 @@ function Rows({ items }) {
       {items.map((item) => (
         <li
           key={item.slug}
-          className="glass flex flex-col items-center gap-8 border-l-4 border-blue-400 p-8 lg:flex-row lg:p-10"
+          className="glass flex flex-col items-center gap-8 border-l-4 border-blue-400 p-6 md:p-10 lg:flex-row lg:items-start"
           style={{ borderLeftColor: item.colour }}
         >
           <div className="shrink-0 text-center lg:w-56">
@@ -17,7 +17,7 @@ function Rows({ items }) {
             ) : null}
             <h2 className="pt-4 text-blue-400">{item.title}</h2>
           </div>
-          <Markdown>{item.body}</Markdown>
+          <Markdown className="w-full min-w-0 lg:flex-1">{item.body}</Markdown>
         </li>
       ))}
     </ul>

@@ -180,8 +180,11 @@ export default function World({ world, home, onSimpleView }) {
   const stage = useRef(null)
   const touch = useTouchDevice()
 
+  // Back at the garage the welcome card comes back too, as the arrival prompt
+  // does at each location, so the intro and its typing line are never lost.
   const reset = useCallback(() => {
     Object.assign(pose.current, layout.home.start, { speed: 0, steer: 0, y: undefined })
+    setIntro(true)
   }, [layout])
 
   const { input, set } = useDriveInput({ onDrive: () => setIntro(false), onReset: reset })

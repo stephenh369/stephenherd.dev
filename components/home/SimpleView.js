@@ -13,7 +13,7 @@ export default function SimpleView({ home, pages, state = 'ready', notice, onEnt
   return (
     <div data-simple-view={state}>
       <main id="main" tabIndex={-1} className="mx-auto flex min-h-[85dvh] max-w-3xl flex-col justify-center gap-8 px-6 py-12 outline-none">
-        <h1 className="text-center text-4xl font-bold sm:text-5xl">
+        <h1 className="text-center text-4xl font-bold text-balance sm:text-5xl">
           <SiteTitle title={home.title} />
         </h1>
 
@@ -24,7 +24,8 @@ export default function SimpleView({ home, pages, state = 'ready', notice, onEnt
         <nav aria-label="Pages">
           <ul className="grid gap-6 sm:grid-cols-2">
             {pages.map((page) => (
-              <li key={page.slug}>
+              // An odd number of links leaves the last one alone on its row, so it spans both columns.
+              <li key={page.slug} className="sm:last:odd:col-span-2">
                 <Link href={page.href} className="glass link-card flex h-full items-center justify-between gap-6 p-6">
                   <span>
                     <span className="block text-xl font-semibold text-blue-400">{page.title}</span>

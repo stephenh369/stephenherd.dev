@@ -8,11 +8,14 @@ import NavMenu from './NavMenu'
  */
 export default function Header({ pages }) {
   return (
-    <header className="fixed inset-x-0 top-0 z-50 flex h-16 items-center justify-between bg-background/70 px-5 shadow-primary backdrop-blur-sm md:px-10">
-      <Link href="/" className="text-3xl font-bold tracking-tight" aria-label="sh.dev home">
-        <span className="text-blue-400">sh</span>.dev
-      </Link>
-      <NavMenu pages={pages} />
+    <header className="fixed inset-x-0 top-0 z-50 h-16 bg-background/70 px-6 shadow-primary backdrop-blur-sm md:px-20">
+      {/* Lines up with the page content beneath it. */}
+      <div className="mx-auto flex h-full max-w-5xl items-center justify-between">
+        <Link href="/" className="text-3xl font-bold tracking-tight" aria-label="sh.dev home">
+          <span className="text-blue-400">sh</span>.dev
+        </Link>
+        <NavMenu pages={pages} />
+      </div>
     </header>
   )
 }
