@@ -241,7 +241,7 @@ export default function World({ world, home, onSimpleView }) {
         {arrived ? `Arrived at ${arrived.name}. Press Enter to open the ${arrived.title} page, or Escape to keep driving.` : ''}
       </p>
 
-      <div className="pointer-events-none absolute inset-0 flex flex-col justify-between p-4 pt-20 md:p-6 md:pt-22">
+      <div className="pointer-events-none absolute inset-0 flex flex-col justify-between p-4 md:p-6">
         <div className="flex items-start justify-between gap-4">
           <HudButtons onSimpleView={onSimpleView} onReset={reset} />
           <div className={intro ? 'hidden sm:block' : ''}>

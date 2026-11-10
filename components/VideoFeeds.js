@@ -36,7 +36,6 @@ function VideoCard({ video, featured }) {
           <span className="text-sm text-white/70">
             {featured ? 'Latest video · ' : ''}
             <time dateTime={video.published}>{formatDate(video.published)}</time>
-            {video.short ? ' · Short' : ''}
           </span>
           <span className="sr-only"> (opens on YouTube in a new tab)</span>
         </span>

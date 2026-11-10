@@ -1,6 +1,4 @@
 import './globals.css'
-import Header from '@/components/Header'
-import { getNavPages } from '@/lib/content'
 import { VIEW_INIT_SCRIPT } from '@/lib/viewPreference'
 
 export const metadata = {
@@ -25,7 +23,6 @@ export default function RootLayout({ children }) {
         <a className="skip-link" href="#main">
           Skip to content
         </a>
-        <Header pages={getNavPages()} />
         {children}
       </body>
     </html>

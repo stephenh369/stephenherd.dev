@@ -55,11 +55,11 @@ export default function Typewriter({ prefix, phrases = [], className = '' }) {
       <span aria-hidden="true">
         {prefix}{' '}
         {reducedMotion ? (
-          <span className="text-blue-400">{sentence.slice(prefix.length + 1)}</span>
+          <span className="text-green-500">{sentence.slice(prefix.length + 1)}</span>
         ) : (
           <>
-            <span className="text-blue-400">{phrase.slice(0, length)}</span>
-            <span className="animate-cursor text-blue-400">|</span>
+            <span className="text-green-500">{phrase.slice(0, length)}</span>
+            <span className="animate-cursor text-green-500">|</span>
           </>
         )}
       </span>

@@ -1,5 +1,5 @@
 ---
-title: Stephen Herd - Web Developer
+title: Stephen Herd - Software Engineer
 typewriter:
   prefix: I can build websites
   phrases:

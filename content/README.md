@@ -10,7 +10,7 @@ simple view), plus where the home garage sits on the map.
 
 ```yaml
 ---
-title: Stephen Herd - Web Developer
+title: Stephen Herd - Software Engineer
 typewriter:
   prefix: I can build websites      # fixed text
   phrases:                           # typed one after another

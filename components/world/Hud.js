@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useEffect, useRef, useSyncExternalStore } from 'react'
+import SiteTitle from '../SiteTitle'
 import Terminal from '../Terminal'
 import Typewriter from '../Typewriter'
 import { CAMERA_OFFSET } from './Car'
@@ -32,8 +33,8 @@ export function IntroCard({ home, touch, onStart, onSimpleView }) {
       aria-labelledby="intro-title"
       className={`${panel} pointer-events-auto w-full max-w-md animate-rise p-5 md:p-6`}
     >
-      <h1 id="intro-title" className="text-2xl text-blue-400 md:text-3xl">
-        {home.title}
+      <h1 id="intro-title" className="text-2xl md:text-3xl">
+        <SiteTitle title={home.title} />
       </h1>
       <Terminal className="mt-4">
         <Typewriter className="min-h-12 sm:min-h-0" prefix={home.typewriter?.prefix} phrases={home.typewriter?.phrases} />

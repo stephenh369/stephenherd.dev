@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Footer from '../Footer'
+import SiteTitle from '../SiteTitle'
 import Terminal from '../Terminal'
 import Typewriter from '../Typewriter'
 
@@ -9,16 +10,11 @@ import Typewriter from '../Typewriter'
  * reduced motion get, and what the "Simple view" button switches to.
  */
 export default function SimpleView({ home, pages, state = 'ready', notice, onEnter3d }) {
-  // "Name - Role" titles get the name picked out in the accent gradient.
-  const [name, ...rest] = home.title.split(' - ')
-  const role = rest.join(' - ')
-
   return (
     <div data-simple-view={state}>
-      <main id="main" tabIndex={-1} className="mx-auto flex min-h-[85dvh] max-w-3xl flex-col justify-center gap-8 px-6 pt-28 pb-12 outline-none">
-        <h1 className="text-center text-5xl font-bold sm:text-6xl">
-          <span className="bg-linear-to-r from-sky-400 to-indigo-500 bg-clip-text text-transparent">{name}</span>
-          {role ? <span className="block pt-3 text-2xl font-semibold text-white/80 sm:text-3xl">{role}</span> : null}
+      <main id="main" tabIndex={-1} className="mx-auto flex min-h-[85dvh] max-w-3xl flex-col justify-center gap-8 px-6 py-12 outline-none">
+        <h1 className="text-center text-4xl font-bold sm:text-5xl">
+          <SiteTitle title={home.title} />
         </h1>
 
         <Terminal>
