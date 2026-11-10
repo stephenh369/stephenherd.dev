@@ -3,7 +3,9 @@ import CollectionList from '@/components/CollectionList'
 import ContactForm from '@/components/ContactForm'
 import PageContent from '@/components/PageContent'
 import PageShell from '@/components/PageShell'
+import VideoFeeds from '@/components/VideoFeeds'
 import { getCollection, getPage, getPages } from '@/lib/content'
+import { getVideoFeeds } from '@/lib/youtube'
 
 /** Forms a page can ask for with `form: <name>` in its front-matter. */
 const FORMS = {
@@ -29,12 +31,14 @@ export default async function Page({ params }) {
 
   const Form = FORMS[page.form]
   const items = getCollection(page.collection)
+  const channels = page.videos ? await getVideoFeeds(page.videos) : null
 
   return (
     <PageShell title={page.heading ?? page.title} eyebrow={page.location?.name}>
       <div className="grid gap-10">
         {Form ? <Form /> : null}
         <PageContent entry={page} />
+        <VideoFeeds channels={channels} />
         <CollectionList
           items={items}
           layout={page.collectionLayout}

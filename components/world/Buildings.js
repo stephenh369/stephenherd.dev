@@ -216,6 +216,55 @@ function PostOffice() {
   )
 }
 
+/** YouTube: a drive-in cinema, with a projection booth and a popcorn stand. */
+function DriveIn() {
+  return (
+    <group>
+      {/* Screen on a steel frame */}
+      {[-5, 0, 5].map((x) => (
+        <group key={x}>
+          <Block size={[0.4, 3, 0.4]} color="#374151" position={[x, 1.5, -0.3]} />
+          <Block size={[0.3, 4.6, 0.3]} color="#374151" position={[x, 2, -1.6]} rotation={[-0.5, 0, 0]} />
+        </group>
+      ))}
+      <Block size={[12.8, 7.4, 0.5]} color="#e5e7eb" position={[0, 6.4, 0]} />
+      <Block size={[12, 6.6, 0.2]} color="#111318" position={[0, 6.4, 0.22]} shadow={false} />
+      {/* Play button */}
+      <Block size={[4, 2.8, 0.14]} color="#ff0000" glow={0.5} position={[0, 6.4, 0.36]} shadow={false} />
+      <group position={[0.08, 6.4, 0.46]} rotation={[0, 0, Math.PI / 2]}>
+        <Cyl args={[0.9, 0.9, 0.08, 3]} color="#ffffff" glow={0.6} rotation={[Math.PI / 2, 0, 0]} shadow={false} />
+      </group>
+      <SignBoard text="DRIVE-IN" width={5} height={1} color="#16181c" textColor="#22c55e" position={[0, 10.75, 0.1]} />
+      {/* Projection booth */}
+      <group position={[9.2, 0, 5]}>
+        <Block size={[3, 2.6, 3]} color="#f3efe6" position={[0, 1.3, 0]} />
+        <Block size={[3.4, 0.3, 3.4]} color={SLATE} position={[0, 2.75, 0]} />
+        <Block size={[0.9, 0.5, 0.14]} color="#fde68a" glow={1.4} position={[-0.6, 1.9, -1.5]} shadow={false} />
+        <Block size={[1, 2, 0.14]} color="#b3261e" position={[0.4, 1, 1.5]} shadow={false} />
+        <Window position={[-1.5, 1.6, 0]} rotation={[0, -Math.PI / 2, 0]} size={[1.1, 0.9]} />
+      </group>
+      {/* Popcorn stand */}
+      <group position={[-9, 0, 5.4]}>
+        <Block size={[2, 1.3, 1.6]} color="#f8fafc" position={[0, 0.65, 0]} />
+        {[-0.75, -0.25, 0.25, 0.75].map((x) => (
+          <Block key={x} size={[0.25, 1.32, 1.62]} color="#dc2626" position={[x, 0.65, 0]} shadow={false} />
+        ))}
+        <Block size={[0.1, 1.5, 0.1]} color="#374151" position={[-0.9, 2, 0.7]} />
+        <Block size={[0.1, 1.5, 0.1]} color="#374151" position={[0.9, 2, 0.7]} />
+        <Block size={[2.4, 0.2, 2]} color="#dc2626" position={[0, 2.8, 0]} />
+        <Block size={[0.6, 0.5, 0.5]} color="#fde68a" position={[0.3, 1.55, 0]} />
+      </group>
+      {/* Speaker posts either side of the parking spot */}
+      {[-6.5, 6.5].map((x) => (
+        <group key={x} position={[x, 0, 11]}>
+          <Cyl args={[0.08, 0.1, 1.5, 6]} color="#374151" position={[0, 0.75, 0]} />
+          <Block size={[0.4, 0.5, 0.3]} color="#9ca3af" position={[0, 1.6, 0]} />
+        </group>
+      ))}
+    </group>
+  )
+}
+
 const BUILDINGS = {
   home: Home,
   cottage: PlainCottage,
@@ -223,6 +272,7 @@ const BUILDINGS = {
   workshop: Workshop,
   castle: Castle,
   postOffice: PostOffice,
+  driveIn: DriveIn,
 }
 
 export default function Building({ kind, ...props }) {

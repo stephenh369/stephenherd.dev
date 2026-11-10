@@ -2,12 +2,13 @@
 
 import Link from 'next/link'
 import { useEffect, useRef, useSyncExternalStore } from 'react'
+import Terminal from '../Terminal'
 import Typewriter from '../Typewriter'
 import { CAMERA_OFFSET } from './Car'
 import { WORLD } from './layout'
 
-const panel = 'rounded-lg border border-white/15 bg-navy-800/85 shadow-xl backdrop-blur-sm'
-const pill = `${panel} px-4 py-2 text-sm font-semibold hover:border-blue-300 hover:text-blue-200`
+const panel = 'glass-solid'
+const pill = `${panel} px-4 py-2 text-sm font-semibold transition-colors hover:bg-green-500 hover:text-black`
 const key = 'rounded border border-white/40 bg-white/10 px-1.5 py-0.5 font-mono text-xs'
 
 function useMediaQuery(query) {
@@ -31,11 +32,13 @@ export function IntroCard({ home, touch, onStart, onSimpleView }) {
       aria-labelledby="intro-title"
       className={`${panel} pointer-events-auto w-full max-w-md animate-rise p-5 md:p-6`}
     >
-      <h1 id="intro-title" className="text-2xl md:text-3xl">
+      <h1 id="intro-title" className="text-2xl text-green-500 md:text-3xl">
         {home.title}
       </h1>
-      <Typewriter className="min-h-14 pt-2 text-lg sm:min-h-0" prefix={home.typewriter?.prefix} phrases={home.typewriter?.phrases} />
-      <p id="drive-help" className="pt-4 text-sm leading-relaxed text-blue-100">
+      <Terminal className="mt-4">
+        <Typewriter className="min-h-12 sm:min-h-0" prefix={home.typewriter?.prefix} phrases={home.typewriter?.phrases} />
+      </Terminal>
+      <p id="drive-help" className="pt-4 text-sm leading-relaxed text-white/80">
         {touch ? (
           <>Use the on-screen buttons to drive from the garage to each location, and park there to open its page.</>
         ) : (
@@ -48,10 +51,10 @@ export function IntroCard({ home, touch, onStart, onSimpleView }) {
         Prefer not to drive? Use the menu above, or switch to the simple view.
       </p>
       <div className="flex flex-wrap gap-3 pt-5">
-        <button type="button" onClick={onStart} className="rounded bg-blue-400 px-5 py-2 font-semibold text-navy-800 hover:bg-blue-300">
+        <button type="button" onClick={onStart} className="btn px-5 py-2">
           Start driving
         </button>
-        <button type="button" onClick={onSimpleView} className="rounded border-2 border-blue-400 px-5 py-2 hover:text-blue-200">
+        <button type="button" onClick={onSimpleView} className="btn-outline px-5 py-2">
           Simple view
         </button>
       </div>
@@ -88,8 +91,8 @@ export function ArrivalPrompt({ location, onOpen, onDismiss }) {
       aria-labelledby="arrival-title"
       className={`${panel} pointer-events-auto w-full max-w-md animate-rise p-5 text-center`}
     >
-      <p className="text-sm font-semibold tracking-widest text-blue-300 uppercase">You have arrived</p>
-      <h2 id="arrival-title" className="pt-1">
+      <p className="text-sm font-semibold tracking-widest text-white/60 uppercase">You have arrived</p>
+      <h2 id="arrival-title" className="pt-1 text-green-500">
         {location.name}
       </h2>
       <div className="flex flex-wrap items-center justify-center gap-3 pt-4">
@@ -97,17 +100,17 @@ export function ArrivalPrompt({ location, onOpen, onDismiss }) {
           ref={openRef}
           href={location.href}
           onClick={onOpen}
-          className="inline-flex items-center gap-2 rounded bg-blue-400 px-5 py-2 font-semibold text-navy-800 hover:bg-blue-300"
+          className="btn px-5 py-2"
         >
           Open {location.title}
-          <kbd className="rounded border border-navy-800/50 px-1.5 py-0.5 font-mono text-xs" aria-hidden="true">
+          <kbd className="rounded border border-black/50 px-1.5 py-0.5 font-mono text-xs" aria-hidden="true">
             Enter
           </kbd>
         </Link>
         <button
           type="button"
           onClick={onDismiss}
-          className="inline-flex items-center gap-2 rounded border-2 border-blue-400 px-5 py-2 hover:text-blue-200"
+          className="btn-outline px-5 py-2"
         >
           Keep driving
           <kbd className={key} aria-hidden="true">
@@ -148,7 +151,7 @@ function HoldButton({ label, onChange, children }) {
     <button
       type="button"
       aria-label={label}
-      className={`${panel} flex h-16 w-16 touch-none items-center justify-center text-2xl select-none active:bg-blue-400 active:text-navy-800`}
+      className={`${panel} flex h-16 w-16 touch-none items-center justify-center text-2xl select-none active:bg-green-500 active:text-black`}
       onPointerDown={(event) => {
         event.currentTarget.setPointerCapture(event.pointerId)
         onChange(true)
@@ -232,18 +235,18 @@ export function Minimap({ layout, poseRef }) {
           />
         ))}
         <g transform={`translate(${layout.home.x + 3} ${layout.home.z}) rotate(${-turn})`}>
-          <path d="M-9 2 L0 -8 L9 2 V9 H-9 Z" fill="#f8fafc" stroke="#091334" strokeWidth="2" />
+          <path d="M-9 2 L0 -8 L9 2 V9 H-9 Z" fill="#f8fafc" stroke="#13151a" strokeWidth="2" />
         </g>
         {layout.locations.map((location) => (
           <g key={location.slug} transform={`translate(${location.pad.x} ${location.pad.z}) rotate(${-turn})`}>
-            <circle r="10" fill="#091334" stroke="#60a5fa" strokeWidth="3" />
+            <circle r="10" fill="#13151a" stroke="#ffffff" strokeWidth="3" />
             <text textAnchor="middle" dominantBaseline="central" fontSize="13" fontWeight="700" fill="#ffffff">
               {location.title.charAt(0)}
             </text>
           </g>
         ))}
         <g ref={car}>
-          <path d="M0 11 L7 -8 L0 -4 L-7 -8 Z" fill="#facc15" stroke="#091334" strokeWidth="2" strokeLinejoin="round" />
+          <path d="M0 11 L7 -8 L0 -4 L-7 -8 Z" fill="#facc15" stroke="#13151a" strokeWidth="2" strokeLinejoin="round" />
         </g>
       </g>
     </svg>

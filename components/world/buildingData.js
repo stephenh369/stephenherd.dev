@@ -49,6 +49,15 @@ export const BUILDING_DATA = {
     ],
     labelHeight: 18,
   },
+  driveIn: {
+    parking: 11,
+    colliders: [
+      { x: 0, z: 0, w: 13, d: 1.6 },
+      { x: 9.2, z: 5, w: 3.4, d: 3.4 },
+      { x: -9, z: 5.4, r: 1.5 },
+    ],
+    labelHeight: 12,
+  },
   postOffice: {
     parking: 9,
     colliders: [

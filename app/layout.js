@@ -12,7 +12,7 @@ export const metadata = {
 export const viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#091334',
+  themeColor: '#13151a',
 }
 
 export default function RootLayout({ children }) {
@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
       <head>
         <script dangerouslySetInnerHTML={{ __html: VIEW_INIT_SCRIPT }} />
       </head>
-      <body className="min-h-dvh bg-navy-700 font-sans text-white antialiased">
+      <body className="min-h-dvh font-sans text-white antialiased">
         <a className="skip-link" href="#main">
           Skip to content
         </a>

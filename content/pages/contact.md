@@ -1,6 +1,7 @@
 ---
 title: Contact
-order: 4
+order: 5
+description: Want to ask me something? Ask away.
 form: contact
 location:
   name: The Post Office

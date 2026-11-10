@@ -42,6 +42,30 @@ export function Cyl({ args, color, glow, material, shadow = true, ...props }) {
 }
 
 /**
+ * A side-on outline pushed straight through from one side to the other, like
+ * a shape cut out of a block. `points` are [z, y] pairs (z runs front to back,
+ * y is up) and `width` is how far the shape extends across x, centred on 0.
+ */
+export function Extruded({ points, width, color, glow, material, shadow = true, ...props }) {
+  const geometry = useMemo(() => {
+    const shape = new Shape()
+    points.forEach(([z, y], index) => (index ? shape.lineTo(z, y) : shape.moveTo(z, y)))
+    shape.closePath()
+    const extruded = new ExtrudeGeometry(shape, { depth: width, bevelEnabled: false })
+    extruded.translate(0, 0, -width / 2)
+    extruded.rotateY(-Math.PI / 2)
+    return extruded
+  }, [points, width])
+  useEffect(() => () => geometry.dispose(), [geometry])
+
+  return (
+    <mesh geometry={geometry} castShadow={shadow} receiveShadow {...props}>
+      <Mat color={color} glow={glow} {...material} />
+    </mesh>
+  )
+}
+
+/**
  * Pitched roof with its ridge running along x. Sits with its base at the local
  * origin (the top of the walls). `span` is the wall-to-wall depth it covers.
  */
@@ -181,8 +205,8 @@ export function FloatingLabel({ title, subtitle, height = 2.5, ...props }) {
     const ctx = canvas.getContext('2d')
     ctx.translate(4, 4)
 
-    ctx.fillStyle = 'rgba(9, 19, 52, 0.92)'
-    ctx.strokeStyle = '#60a5fa'
+    ctx.fillStyle = 'rgba(19, 21, 26, 0.92)'
+    ctx.strokeStyle = '#22c55e'
     ctx.lineWidth = 3 * scale
     roundedRect(ctx, 0, 0, boxWidth, boxHeight, 18 * scale)
     ctx.fill()
@@ -192,14 +216,14 @@ export function FloatingLabel({ title, subtitle, height = 2.5, ...props }) {
     ctx.lineTo(boxWidth / 2, boxHeight + pointer)
     ctx.lineTo(boxWidth / 2 + pointer, boxHeight - 1)
     ctx.closePath()
-    ctx.fillStyle = '#60a5fa'
+    ctx.fillStyle = '#22c55e'
     ctx.fill()
 
     ctx.textAlign = 'center'
     ctx.textBaseline = 'middle'
     if (sub) {
       ctx.font = subFont
-      ctx.fillStyle = '#93c5fd'
+      ctx.fillStyle = '#4ade80'
       if ('letterSpacing' in ctx) ctx.letterSpacing = `${2 * scale}px`
       ctx.fillText(sub, boxWidth / 2, 30 * scale)
       if ('letterSpacing' in ctx) ctx.letterSpacing = '0px'

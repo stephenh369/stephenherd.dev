@@ -35,7 +35,7 @@ title: About              # menu label, page <title>, sign in the 3D world
 heading: About Me         # optional: page heading if different from title
 order: 1                  # position in menus (lowest first)
 nav: false                # optional: leave the page out of menus
-description: ...          # optional: meta description
+description: ...          # optional: meta description, also shown on the simple view's link card
 
 image: /about.jpg         # optional: image beside the text (file in /public)
 imageAlt: Stephen Herd
@@ -50,9 +50,17 @@ itemPages: true           # optional: give each item its own page at /<slug>/<it
 
 form: contact             # optional: show the contact form
 
+videos:                   # optional: show recent videos from YouTube channels
+  limit: 5                # videos per channel (the first is shown large)
+  channels:
+    - name: Stevo The Dev
+      handle: "@StevoTheDev"            # used for the "Visit channel" link
+      id: UCQ6N2aj0Aog4_S2SewLIhnw      # channel ID, see "YouTube videos" below
+      description: What the channel is about.
+
 location:                 # optional: put this page on the 3D map
   name: The Lighthouse    # name of the place
-  building: lighthouse    # home | cottage | lighthouse | workshop | castle | postOffice
+  building: lighthouse    # home | cottage | lighthouse | workshop | castle | postOffice | driveIn
   position: [-46, 29]     # where the building stands
   road:                   # waypoints of the road leading to it
     - [22, 36]
@@ -77,7 +85,7 @@ title: React Synth
 order: 1
 image: /react_synth.png
 imageAlt: Screenshot of the React Synth app
-colour: "#61DBFB"         # optional: tint for the item's card
+colour: "#61DBFB"         # optional: accent colour for the item's card
 link:                     # optional: button (item pages)
   label: Try it Here!
   url: https://example.com
@@ -85,6 +93,17 @@ link:                     # optional: button (item pages)
 
 Item text, in Markdown.
 ```
+
+## YouTube videos
+
+A page with a `videos` block lists the most recent uploads of each channel,
+read from the channel's public feed (no API key). The list is fetched when the
+site is built, and refreshed in the visitor's browser through the small
+Netlify function at `/api/youtube`, so new uploads appear without a redeploy.
+
+A channel's ID starts with `UC` and is not the same as its `@handle`. To find
+it, open the channel on YouTube, choose "Share channel" then "Copy channel ID"
+(under the channel description's "More" link).
 
 ## The map
 

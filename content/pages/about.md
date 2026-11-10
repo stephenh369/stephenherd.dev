@@ -2,6 +2,7 @@
 title: About
 heading: About Me
 order: 1
+description: Who I am and what I work with.
 image: /about.jpg
 imageAlt: Stephen Herd
 links:

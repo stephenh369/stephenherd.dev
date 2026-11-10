@@ -4,10 +4,10 @@
  * form (it works without JavaScript and posts straight to /success).
  */
 export default function ContactForm() {
-  const field = 'w-full rounded border-2 border-white/40 bg-navy-700/60 px-3 py-2 text-white focus:border-blue-300'
+  const field = 'w-full rounded-lg border border-white/30 bg-transparent px-3 py-2 text-white focus:border-green-500'
   return (
     <form
-      className="grid max-w-2xl gap-6"
+      className="glass grid gap-6 p-6 md:p-10"
       name="contact-form"
       method="POST"
       action="/success"
@@ -33,11 +33,8 @@ export default function ContactForm() {
         <textarea className={field} id="message" name="message" rows={6} required />
       </div>
       <div>
-        <button
-          className="rounded border-2 border-navy-800 bg-blue-400 px-16 py-4 font-semibold text-navy-800 hover:bg-blue-300"
-          type="submit"
-        >
-          Submit
+        <button className="btn w-full sm:w-auto sm:px-16" type="submit">
+          Send
         </button>
       </div>
     </form>

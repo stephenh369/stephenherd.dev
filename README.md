@@ -68,6 +68,8 @@ components/world/       The 3D world
   Hud.js                Intro card, arrival prompt, minimap, touch controls
   World.js              Puts the scene and HUD together
 lib/content.js          Reads the Markdown in content/
+lib/youtube*.js         Recent videos for pages with a `videos` block
+netlify/functions/      /api/youtube: keeps those videos fresh between deploys
 lib/viewPreference.js   3D / simple view preference
 ```
 
@@ -91,3 +93,9 @@ The contact form uses [Netlify Forms](https://docs.netlify.com/forms/setup/).
 Netlify detects it by finding `data-netlify="true"` in the exported
 `contact.html`, so the form in `components/ContactForm.js` must stay
 server-rendered. Submissions redirect to `/success`.
+
+The YouTube page's videos are fetched from each channel's public feed during
+the build. `netlify/functions/youtube.mjs` serves the same data at
+`/api/youtube` (cached for half an hour) so the page can show uploads made
+since the last deploy. If YouTube cannot be reached, the build still succeeds
+and the page links to the channels instead.

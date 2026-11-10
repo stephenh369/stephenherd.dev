@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Footer from '../Footer'
+import Terminal from '../Terminal'
 import Typewriter from '../Typewriter'
 
 /**
@@ -8,49 +9,48 @@ import Typewriter from '../Typewriter'
  * reduced motion get, and what the "Simple view" button switches to.
  */
 export default function SimpleView({ home, pages, state = 'ready', notice, onEnter3d }) {
+  // "Name - Role" titles get the name picked out in the accent gradient.
+  const [name, ...rest] = home.title.split(' - ')
+  const role = rest.join(' - ')
+
   return (
     <div data-simple-view={state}>
-      <main id="main" tabIndex={-1} className="outline-none">
-        <section className="flex min-h-[70dvh] items-center bg-blue-900/60 bg-[url('/hero.jpeg')] bg-cover bg-center bg-blend-overlay">
-          <div className="mx-6 mt-16 rounded bg-navy-800/60 p-6 shadow-lg md:mx-16">
-            <h1>{home.title}</h1>
-            <Typewriter className="min-h-14 pt-3 text-xl sm:min-h-0" prefix={home.typewriter?.prefix} phrases={home.typewriter?.phrases} />
-          </div>
-        </section>
+      <main id="main" tabIndex={-1} className="mx-auto flex min-h-[85dvh] max-w-3xl flex-col justify-center gap-8 px-6 pt-28 pb-12 outline-none">
+        <h1 className="text-center text-5xl font-bold sm:text-6xl">
+          <span className="bg-linear-to-r from-sky-400 to-indigo-500 bg-clip-text text-transparent">{name}</span>
+          {role ? <span className="block pt-3 text-2xl font-semibold text-white/80 sm:text-3xl">{role}</span> : null}
+        </h1>
 
-        <section aria-labelledby="explore-title" className="bg-linear-to-br from-navy-500 via-navy-600 to-navy-800 px-6 py-16 md:px-20">
-          <div className="mx-auto max-w-5xl">
-            <h2 id="explore-title" className="pb-8 text-3xl">
-              Explore
-            </h2>
-            <ul className="grid gap-5 sm:grid-cols-2">
-              {pages.map((page) => (
-                <li key={page.slug}>
-                  <Link
-                    href={page.href}
-                    className="flex h-full items-center justify-between gap-4 rounded border-2 border-white/20 bg-white/10 p-6 text-xl font-semibold shadow-lg hover:border-blue-300 hover:text-blue-200"
-                  >
-                    {page.title}
-                    <span aria-hidden="true">&rarr;</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
+        <Terminal>
+          <Typewriter className="min-h-14 text-lg sm:min-h-0 sm:text-xl" prefix={home.typewriter?.prefix} phrases={home.typewriter?.phrases} />
+        </Terminal>
 
-            <div className="pt-12">
-              {notice ? <p className="pb-4 text-blue-100">{notice}</p> : null}
-              {onEnter3d ? (
-                <button
-                  type="button"
-                  onClick={onEnter3d}
-                  className="rounded bg-blue-400 px-6 py-3 font-semibold text-navy-800 hover:bg-blue-300"
-                >
-                  Explore in 3D instead
-                </button>
-              ) : null}
-            </div>
+        <nav aria-label="Pages">
+          <ul className="grid gap-6 sm:grid-cols-2">
+            {pages.map((page) => (
+              <li key={page.slug}>
+                <Link href={page.href} className="glass link-card flex h-full items-center justify-between gap-6 p-6">
+                  <span>
+                    <span className="block text-xl font-semibold text-green-500">{page.title}</span>
+                    {page.description ? <span className="block pt-2 text-white/80">{page.description}</span> : null}
+                  </span>
+                  <span aria-hidden="true">&rarr;</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        {notice || onEnter3d ? (
+          <div className="text-center">
+            {notice ? <p className="pb-4 text-white/70">{notice}</p> : null}
+            {onEnter3d ? (
+              <button type="button" onClick={onEnter3d} className="btn">
+                Explore in 3D instead
+              </button>
+            ) : null}
           </div>
-        </section>
+        ) : null}
       </main>
       <Footer />
     </div>

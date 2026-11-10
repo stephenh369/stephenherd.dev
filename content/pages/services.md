@@ -1,6 +1,7 @@
 ---
 title: Services
 order: 2
+description: WordPress, WooCommerce and custom-built websites.
 collection: services
 collectionLayout: rows
 location:

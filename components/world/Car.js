@@ -4,7 +4,7 @@ import { useFrame } from '@react-three/fiber'
 import { useRef } from 'react'
 import { MathUtils, Vector3 } from 'three'
 import { WORLD, clamp } from './layout'
-import { Block, Cyl } from './parts'
+import { Block, Cyl, Extruded, Mat } from './parts'
 
 /** How the car handles. Speeds are in world units per second. */
 const DRIVE = {
@@ -16,31 +16,133 @@ const DRIVE = {
   offRoadFactor: 0.62,
   steerRate: 2.3,
   wheelBase: 2.6,
-  track: 1.9,
-  wheelRadius: 0.5,
+  track: 1.72,
+  wheelRadius: 0.43,
 }
 
 /** Where the camera sits relative to the car: up high, to the south-east. */
 export const CAMERA_OFFSET = new Vector3(21, 32, 31)
 const CAMERA_AIM = new Vector3(-CAMERA_OFFSET.x, 0, -CAMERA_OFFSET.z).normalize().multiplyScalar(7)
 
-const BODY = '#2f7fe6'
-const TRIM = '#1f2937'
+const PAINT = '#5b616b' // graphite grey
+const TRIM = '#16181c'
+const GLASS = '#0e1620'
+const SILVER = '#cfd4da'
+const paint = { roughness: 0.55, metalness: 0.1 }
+const gloss = { roughness: 0.6 }
 
-function Wheel({ x, z, spinRef }) {
+// Side-on outlines as [z, y] pairs: z runs from the tail (-) to the nose (+).
+const arch = (z) => [
+  [z - 0.52, 0.24],
+  [z - 0.52, 0.52],
+  [z - 0.32, 0.84],
+  [z, 0.94],
+  [z + 0.32, 0.84],
+  [z + 0.52, 0.52],
+  [z + 0.52, 0.24],
+]
+const AXLE = DRIVE.wheelBase / 2
+
+/** Centre of the body: low nose, a bonnet that rises to the screen and a short tail. */
+const BODY_PROFILE = [
+  [2.2, 0.24],
+  [2.3, 0.44],
+  [2.25, 0.64],
+  [1.72, 0.86],
+  [0.86, 0.98],
+  [-0.7, 1.0],
+  [-1.4, 1.05],
+  [-2.06, 0.98],
+  [-2.26, 0.88],
+  [-2.3, 0.5],
+  [-2.2, 0.24],
+  ...arch(-AXLE),
+  ...arch(AXLE),
+]
+/** The wings down each side stand proud of the bonnet and swell into wide rear haunches. */
+const WING_PROFILE = [
+  [2.16, 0.24],
+  [2.26, 0.44],
+  [2.2, 0.7],
+  [1.74, 0.99],
+  [1.0, 1.07],
+  [0.2, 1.05],
+  [-0.7, 1.08],
+  [-1.35, 1.18],
+  [-2.0, 1.04],
+  [-2.24, 0.9],
+  [-2.28, 0.5],
+  [-2.18, 0.24],
+  ...arch(-AXLE),
+  ...arch(AXLE),
+]
+/** Cabin: a steep screen, a short roof and one long fastback sweep down to the tail. */
+const CABIN_PROFILE = [
+  [0.9, 1.0],
+  [0.2, 1.4],
+  [-0.4, 1.44],
+  [-1.2, 1.26],
+  [-1.95, 1.0],
+]
+/** The teardrop side glass, set a hair proud of the cabin sides. */
+const SIDE_GLASS_PROFILE = [
+  [0.68, 1.07],
+  [0.2, 1.34],
+  [-0.38, 1.38],
+  [-1.0, 1.24],
+  [-1.22, 1.07],
+]
+
+/** A flat panel laid along a sloping line of a side-on outline, from [z, y] to [z, y]. */
+function Panel({ from, to, width, lift = 0.02, thickness = 0.05, ...props }) {
+  const dz = to[0] - from[0]
+  const dy = to[1] - from[1]
+  const length = Math.hypot(dz, dy)
+  // Nudge the panel out along the surface normal so it sits on top of the bodywork.
+  const side = dz < 0 ? 1 : -1
+  const ny = (-dz / length) * side
+  const nz = (dy / length) * side
   return (
-    <group position={[x, DRIVE.wheelRadius, z]}>
+    <Block
+      size={[width, length, thickness]}
+      position={[0, (from[1] + to[1]) / 2 + ny * lift, (from[0] + to[0]) / 2 + nz * lift]}
+      rotation={[Math.atan2(dz, dy), 0, 0]}
+      shadow={false}
+      {...props}
+    />
+  )
+}
+
+const SPOKES = [0, 1, 2, 3, 4].map((i) => (i * Math.PI * 2) / 5)
+
+/** `out` is +1 or -1: which way the wheel's face points. */
+function Wheel({ out, spinRef }) {
+  const r = DRIVE.wheelRadius
+  return (
+    <group position={[0, r, 0]}>
       <group ref={spinRef}>
-        <Cyl args={[DRIVE.wheelRadius, DRIVE.wheelRadius, 0.42, 10]} color="#22262d" rotation={[0, 0, Math.PI / 2]} />
-        <Cyl args={[0.26, 0.26, 0.46, 6]} color="#cbd5e1" rotation={[0, 0, Math.PI / 2]} shadow={false} />
+        <Cyl args={[r, r, 0.34, 14]} color="#1b1d21" rotation={[0, 0, Math.PI / 2]} />
+        <Cyl args={[r * 0.7, r * 0.7, 0.36, 14]} color="#3a3d43" rotation={[0, 0, Math.PI / 2]} shadow={false} />
+        {/* Five-spoke alloy */}
+        {SPOKES.map((angle) => (
+          <group key={angle} rotation={[angle, 0, 0]}>
+            <Block size={[0.05, r * 0.7, 0.11]} color={SILVER} position={[out * 0.18, r * 0.36, 0]} shadow={false} material={gloss} />
+          </group>
+        ))}
+        <Cyl args={[0.08, 0.08, 0.42, 8]} color={SILVER} rotation={[0, 0, Math.PI / 2]} shadow={false} material={gloss} />
       </group>
+      {/* Red brake caliper, showing between the spokes */}
+      <Block size={[0.05, 0.2, 0.13]} color="#dc2626" position={[out * 0.165, 0.06, 0.2]} rotation={[0.5, 0, 0]} shadow={false} />
     </group>
   )
 }
 
-/** A boxy little 4x4. Built with its nose pointing along +z. */
+/**
+ * A low-poly mid-engined sports coupe in graphite grey: long sloping fastback,
+ * wide rear haunches with an intake ahead of each rear wheel, oval headlights
+ * and five-spoke alloys over red calipers. Built with its nose along +z.
+ */
 function CarModel({ poseRef }) {
-  const half = DRIVE.wheelBase / 2
   const side = DRIVE.track / 2
   const body = useRef(null)
   const frontLeft = useRef(null)
@@ -61,46 +163,61 @@ function CarModel({ poseRef }) {
     // The front wheels turn with the steering, and the body leans out of corners a touch.
     steerLeft.current.rotation.y = steer * 0.5
     steerRight.current.rotation.y = steer * 0.5
-    body.current.rotation.z = steer * (speed / DRIVE.maxForward) * 0.07
+    body.current.rotation.z = steer * (speed / DRIVE.maxForward) * 0.05
   })
 
   return (
     <group ref={body}>
-      {/* Body */}
-      <Block size={[1.9, 0.62, 4.1]} color={BODY} position={[0, 0.86, 0]} />
-      <Block size={[1.8, 0.36, 1.35]} color={BODY} position={[0, 1.3, 1.3]} />
-      <Block size={[1.82, 0.98, 2.6]} color={BODY} position={[0, 1.62, -0.66]} />
-      <Block size={[1.9, 0.12, 2.7]} color="#f8fafc" position={[0, 2.17, -0.66]} />
-      {/* Glass */}
-      <Block size={[1.6, 0.6, 0.08]} color="#16263c" position={[0, 1.72, 0.64]} shadow={false} material={{ roughness: 0.2 }} />
-      <Block size={[1.6, 0.5, 0.08]} color="#16263c" position={[0, 1.76, -1.96]} shadow={false} material={{ roughness: 0.2 }} />
-      <Block size={[1.86, 0.52, 2.1]} color="#16263c" position={[0, 1.76, -0.66]} shadow={false} material={{ roughness: 0.2 }} />
-      <Block size={[1.88, 0.56, 0.14]} color={BODY} position={[0, 1.76, -0.5]} shadow={false} />
-      {/* Bumpers, grille and lights */}
-      <Block size={[2, 0.28, 0.3]} color={TRIM} position={[0, 0.66, 2.1]} />
-      <Block size={[2, 0.28, 0.3]} color={TRIM} position={[0, 0.66, -2.1]} />
-      <Block size={[1, 0.34, 0.08]} color={TRIM} position={[0, 1.02, 2.06]} shadow={false} />
+      {/* Bodywork */}
+      <Extruded points={BODY_PROFILE} width={1.72} color={PAINT} material={paint} />
+      <Extruded points={WING_PROFILE} width={0.16} color={PAINT} material={paint} position={[0.93, 0, 0]} />
+      <Extruded points={WING_PROFILE} width={0.16} color={PAINT} material={paint} position={[-0.93, 0, 0]} />
+      <Extruded points={CABIN_PROFILE} width={1.56} color={PAINT} material={paint} />
+      <Block size={[1.3, 0.5, 4]} color={TRIM} position={[0, 0.5, 0]} shadow={false} />
+      {/* Glass: side windows, windscreen and the long rear hatch */}
+      <Extruded points={SIDE_GLASS_PROFILE} width={1.6} color={GLASS} material={gloss} shadow={false} />
+      <Panel from={[0.84, 1.04]} to={[0.24, 1.385]} width={1.3} color={GLASS} material={gloss} />
+      <Panel from={[-0.52, 1.415]} to={[-1.2, 1.26]} width={1.2} color={GLASS} material={gloss} />
+      <Panel from={[-1.2, 1.26]} to={[-1.62, 1.115]} width={1.2} color={GLASS} material={gloss} />
+      {/* Nose: oval headlights on the wings, three intakes, number plate */}
+      <Block size={[0.72, 0.2, 0.08]} color={TRIM} position={[0, 0.4, 2.27]} shadow={false} />
+      <Block size={[0.4, 0.13, 0.04]} color="#f8fafc" position={[0, 0.58, 2.29]} rotation={[-0.25, 0, 0]} shadow={false} />
+      <Block size={[1.96, 0.07, 0.3]} color={TRIM} position={[0, 0.26, 2.12]} shadow={false} />
+      {/* Tail: light clusters, plate, twin centre exhausts and the spoiler lip */}
+      <Block size={[0.46, 0.13, 0.04]} color="#facc15" position={[0, 0.62, -2.3]} shadow={false} />
+      <Block size={[1.3, 0.2, 0.08]} color={TRIM} position={[0, 0.33, -2.24]} shadow={false} />
+      <Block size={[1.5, 0.05, 0.22]} color={PAINT} position={[0, 1.0, -2.12]} rotation={[-0.25, 0, 0]} material={paint} shadow={false} />
       {[-1, 1].map((s) => (
         <group key={s}>
-          <Block size={[0.34, 0.3, 0.1]} color="#fef9c3" glow={1.4} position={[s * 0.7, 1.02, 2.06]} shadow={false} />
-          <Block size={[0.3, 0.3, 0.1]} color="#ef4444" glow={0.9} position={[s * 0.75, 1.0, -2.06]} shadow={false} />
-          <Block size={[0.5, 0.2, 1.2]} color={TRIM} position={[s * 0.96, 0.98, half]} shadow={false} />
-          <Block size={[0.5, 0.2, 1.2]} color={TRIM} position={[s * 0.96, 0.98, -half]} shadow={false} />
+          <mesh position={[s * 0.8, 0.85, 1.98]} rotation={[0.56, 0, 0]} scale={[1, 1, 1.5]}>
+            <cylinderGeometry args={[0.14, 0.14, 0.08, 8]} />
+            <Mat color="#fff7d6" glow={0.8} />
+          </mesh>
+          <Block size={[0.44, 0.22, 0.08]} color={TRIM} position={[s * 0.7, 0.42, 2.24]} shadow={false} />
+          <Block size={[0.3, 0.05, 0.05]} color="#fde68a" glow={1} position={[s * 0.7, 0.57, 2.27]} shadow={false} />
+          <Block size={[0.46, 0.15, 0.1]} color="#ef4444" glow={0.9} position={[s * 0.76, 0.84, -2.26]} rotation={[0.1, 0, 0]} shadow={false} />
+          <Cyl args={[0.07, 0.07, 0.16, 8]} color={SILVER} position={[s * 0.1, 0.33, -2.28]} rotation={[Math.PI / 2, 0, 0]} shadow={false} material={gloss} />
+          {/* Engine intake in front of the rear wheel */}
+          <Block size={[0.05, 0.34, 0.3]} color={TRIM} position={[s * 1.0, 0.72, -0.6]} shadow={false} />
+          <Block size={[0.07, 0.04, 0.3]} color={PAINT} position={[s * 1.0, 0.72, -0.6]} shadow={false} material={paint} />
+          {/* Sill and door mirror */}
+          <Block size={[0.06, 0.1, 1.5]} color={TRIM} position={[s * 1.0, 0.3, 0]} shadow={false} />
+          <Block size={[0.26, 0.13, 0.2]} color={PAINT} position={[s * 0.92, 1.14, 0.56]} shadow={false} material={paint} />
         </group>
       ))}
-      {/* Spare wheel and roof rack */}
-      <Cyl args={[0.46, 0.46, 0.3, 10]} color="#22262d" position={[0, 1.5, -2.14]} rotation={[Math.PI / 2, 0, 0]} />
-      <Block size={[1.3, 0.34, 1]} color="#9a6b3f" position={[0, 2.4, -1]} />
-      <Block size={[0.7, 0.26, 0.8]} color="#d97706" position={[0.2, 2.36, 0.05]} />
       {/* Wheels */}
-      <group ref={steerLeft} position={[side, 0, half]}>
-        <Wheel x={0} z={0} spinRef={frontLeft} />
+      <group ref={steerLeft} position={[side, 0, AXLE]}>
+        <Wheel out={1} spinRef={frontLeft} />
       </group>
-      <group ref={steerRight} position={[-side, 0, half]}>
-        <Wheel x={0} z={0} spinRef={frontRight} />
+      <group ref={steerRight} position={[-side, 0, AXLE]}>
+        <Wheel out={-1} spinRef={frontRight} />
       </group>
-      <Wheel x={side} z={-half} spinRef={rearLeft} />
-      <Wheel x={-side} z={-half} spinRef={rearRight} />
+      <group position={[side, 0, -AXLE]}>
+        <Wheel out={1} spinRef={rearLeft} />
+      </group>
+      <group position={[-side, 0, -AXLE]}>
+        <Wheel out={-1} spinRef={rearRight} />
+      </group>
     </group>
   )
 }

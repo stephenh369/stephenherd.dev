@@ -9,7 +9,7 @@ import SimpleView from './SimpleView'
 const World = dynamic(() => import('../world/World'), {
   ssr: false,
   loading: () => (
-    <main id="main" className="fixed inset-0 flex items-center justify-center bg-navy-700">
+    <main id="main" className="fixed inset-0 flex items-center justify-center bg-background">
       <p role="status">Loading the 3D world&hellip;</p>
     </main>
   ),

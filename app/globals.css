@@ -1,12 +1,11 @@
 @import "tailwindcss";
 
 @theme {
-  --color-navy-400: #18338c;
-  --color-navy-500: #122669;
-  --color-navy-600: #0c1a46;
-  --color-navy-700: #091334;
-  --color-navy-800: #060d23;
-  --color-navy-900: #030611;
+  /* Palette shared with the astro-portfolio project: near-black surfaces,
+     translucent "glass" containers and a green accent. */
+  --color-background: #13151a;
+  --color-container: #23262d;
+  --shadow-primary: 0 0 1px 1px rgb(255 255 255 / 0.1);
 
   --animate-cursor: cursor-blink 1s steps(1) infinite;
   --animate-rise: rise 0.35s ease-out both;
@@ -30,19 +29,27 @@
 
 @layer base {
   html {
-    background: var(--color-navy-700);
+    background: var(--color-background);
     color: #fff;
     scroll-behavior: smooth;
+  }
+  /* A soft teal-to-charcoal wash that stays put while the page scrolls. */
+  body {
+    background:
+      radial-gradient(60% 50% at 48% 10%, rgb(34 84 92 / 0.55), transparent 72%),
+      radial-gradient(45% 60% at 0% 12%, rgb(13 62 104 / 0.6), transparent 72%),
+      linear-gradient(#101d2d, var(--color-background) 78%);
+    background-attachment: fixed;
   }
 
   h1 {
     font-size: var(--text-4xl);
     line-height: 1.15;
-    font-weight: 700;
+    font-weight: 600;
   }
   h2 {
     font-size: var(--text-2xl);
-    font-weight: 700;
+    font-weight: 600;
   }
   h3 {
     font-size: var(--text-xl);
@@ -50,9 +57,69 @@
   }
 
   :focus-visible {
-    outline: 3px solid var(--color-blue-300);
+    outline: 3px solid var(--color-green-400);
     outline-offset: 3px;
     border-radius: 2px;
+  }
+}
+
+@layer components {
+  /* Translucent container used for every panel, card and HUD element. */
+  .glass {
+    background: rgb(from var(--color-container) r g b / 0.4);
+    box-shadow: var(--shadow-primary);
+    border-radius: var(--radius-lg);
+    backdrop-filter: blur(4px);
+  }
+  /* Over the bright 3D world the glass needs to be more opaque to stay readable. */
+  .glass-solid {
+    background: rgb(from var(--color-background) r g b / 0.82);
+    box-shadow: var(--shadow-primary);
+    border-radius: var(--radius-lg);
+    backdrop-filter: blur(4px);
+  }
+
+  /* A card that is one big link: floods green, with black text, on hover or focus. */
+  .link-card {
+    transition: background-color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .link-card :is(h2, h3, p, span, time) {
+    transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .link-card:is(:hover, :focus-visible) {
+    background-color: var(--color-green-500);
+    color: #000;
+  }
+  .link-card:is(:hover, :focus-visible) :is(h2, h3, p, span, time) {
+    color: #000;
+  }
+
+  .btn,
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: var(--radius-lg);
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    transition:
+      background-color 0.2s,
+      color 0.2s;
+  }
+  .btn {
+    background: var(--color-green-500);
+    color: #000;
+  }
+  .btn:hover {
+    background: var(--color-green-400);
+  }
+  .btn-outline {
+    box-shadow: inset 0 0 0 2px var(--color-green-500);
+  }
+  .btn-outline:hover {
+    background: var(--color-green-500);
+    color: #000;
   }
 }
 
@@ -70,8 +137,8 @@ html[data-view='3d'] [data-simple-view='pending'] {
   left: 0.5rem;
   z-index: 100;
   padding: 0.5rem 1rem;
-  background: #fff;
-  color: var(--color-navy-700);
+  background: var(--color-green-500);
+  color: #000;
   font-weight: 600;
   border-radius: 0.25rem;
   transform: translateY(-200%);
@@ -88,12 +155,11 @@ html[data-view='3d'] [data-simple-view='pending'] {
   line-height: 1.7;
 }
 .prose-content a {
-  color: var(--color-blue-300);
-  text-decoration: underline;
+  color: var(--color-blue-400);
   text-underline-offset: 3px;
 }
-.prose-content a:hover {
-  color: #fff;
+.prose-content a:is(:hover, :focus) {
+  text-decoration: underline;
 }
 .prose-content ul {
   list-style: disc;
@@ -113,7 +179,7 @@ html[data-view='3d'] [data-simple-view='pending'] {
   font-size: 0.9em;
 }
 .prose-content blockquote {
-  border-left: 3px solid var(--color-blue-400);
+  border-left: 3px solid var(--color-green-500);
   padding-left: 1em;
   font-style: italic;
 }

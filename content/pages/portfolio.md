@@ -1,6 +1,7 @@
 ---
 title: Portfolio
 order: 3
+description: Some of my projects.
 collection: projects
 collectionLayout: cards
 itemPages: true

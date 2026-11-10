@@ -8,9 +8,9 @@ import NavMenu from './NavMenu'
  */
 export default function Header({ pages }) {
   return (
-    <header className="fixed inset-x-0 top-0 z-50 flex h-16 items-center justify-between bg-navy-800/75 px-5 backdrop-blur-sm md:px-10">
+    <header className="fixed inset-x-0 top-0 z-50 flex h-16 items-center justify-between bg-background/70 px-5 shadow-primary backdrop-blur-sm md:px-10">
       <Link href="/" className="text-3xl font-bold tracking-tight" aria-label="sh.dev home">
-        <span className="text-blue-400">sh</span>.dev
+        <span className="bg-linear-to-r from-sky-400 to-indigo-500 bg-clip-text text-transparent">sh</span>.dev
       </Link>
       <NavMenu pages={pages} />
     </header>
