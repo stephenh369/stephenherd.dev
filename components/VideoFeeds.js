@@ -23,9 +23,11 @@ function PlayBadge() {
   )
 }
 
-function VideoCard({ video, featured }) {
+function VideoCard({ video, featured, wide }) {
+  // The featured video is large; a card that would sit alone on its row spans the row instead.
+  const span = featured ? 'sm:col-span-2 lg:row-span-2' : wide ? 'sm:col-span-2 lg:col-span-2' : ''
   return (
-    <li className={featured ? 'sm:col-span-2 lg:row-span-2' : ''}>
+    <li className={span}>
       <a className="glass link-card flex h-full flex-col overflow-hidden" href={video.url} target="_blank" rel="noreferrer">
         <span className="relative block aspect-video w-full bg-black">
           <img className="h-full w-full object-cover" src={video.thumbnail} alt="" loading="lazy" />
@@ -78,9 +80,11 @@ function Channel({ channel }) {
       </div>
       {videos.length ? (
         <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {videos.map((video, index) => (
-            <VideoCard key={video.id} video={video} featured={index === 0} />
-          ))}
+          {videos.map((video, index) => {
+            // Besides the featured video, an odd number of cards leaves the last one alone on its row.
+            const wide = index === videos.length - 1 && index > 0 && (videos.length - 1) % 2 === 1
+            return <VideoCard key={video.id} video={video} featured={index === 0} wide={wide} />
+          })}
         </ul>
       ) : (
         <p className="glass p-6">The latest videos could not be loaded just now. You can find them all on the channel.</p>
