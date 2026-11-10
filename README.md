@@ -1,34 +1,93 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# stephenherd.dev
 
-## Getting Started
+Portfolio site for Stephen Herd. The home page is a small 3D world, a low-poly
+Scottish glen, where you drive a car from the home garage to a building for each
+page. Parking at a building offers to open its page.
 
-First, run the development server:
+Built with [Next.js](https://nextjs.org/) (App Router, static export),
+[React Three Fiber](https://r3f.docs.pmnd.rs/) / [three.js](https://threejs.org/)
+and [Tailwind CSS](https://tailwindcss.com/). All content is Markdown.
+
+## Getting started
+
+Requires Node 20.9 or newer.
 
 ```bash
-npm run dev
-# or
-yarn dev
+npm install
+npm run dev     # http://localhost:3000
+npm run build   # static site in ./out
+npm run start   # serve ./out locally
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Editing content
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Everything the site says lives in [`content/`](content/). No code changes are
+needed to edit copy, add a page, add a project or add a place to the map. See
+[`content/README.md`](content/README.md) for every available field.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+| Path | What it is |
+| --- | --- |
+| `content/home.md` | Intro text and the home garage |
+| `content/pages/*.md` | One page per file, served at `/<file-name>` |
+| `content/projects/*.md` | Portfolio projects, listed on (and linked from) `/portfolio` |
+| `content/services/*.md` | Services, listed on `/services` |
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Getting around without driving
 
-## Learn More
+The 3D world is an enhancement, never the only way in:
 
-To learn more about Next.js, take a look at the following resources:
+- **Main menu** – ordinary links to every page, present on every screen
+  including the 3D world.
+- **Simple view** – a plain home page (intro plus a list of links). It is what
+  is served as HTML, so it works without JavaScript. It is used automatically
+  when WebGL is unavailable or the visitor prefers reduced motion, and anyone
+  can switch between it and the 3D world; the choice is remembered.
+- **Keyboard** – drive with the arrow keys or WASD, `R` returns to the garage.
+  On arrival, focus moves to the "Open page" link (`Enter` opens, `Esc`
+  dismisses) and the arrival is announced to screen readers.
+- **Touch** – on-screen steer / accelerate / brake buttons appear on devices
+  without a precise pointer.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Every page is a real URL (`/about`, `/portfolio/dobble`, ...), so pages can be
+linked, bookmarked and indexed. The car's position is kept for the browser
+session, so coming back from a page puts you where you parked.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## How the code is organised
 
-## Deploy on Vercel
+```
+app/                    Routes: home, /[slug] pages, /[slug]/[item] collection items
+components/             Page templates (header, Markdown, contact form, lists)
+components/home/        Home page: picks 3D world or simple view
+components/world/       The 3D world
+  layout.js             Pure data: terrain heights, roads, parking spots, colliders, scenery
+  buildingData.js       Per-building parking distance and collision shapes
+  Buildings.js          The buildings, made from primitives
+  Car.js                Driving, collisions, follow camera, arrival detection
+  Terrain.js Scenery.js Ground, loch, roads, sky, trees, sheep, clouds
+  Hud.js                Intro card, arrival prompt, minimap, touch controls
+  World.js              Puts the scene and HUD together
+lib/content.js          Reads the Markdown in content/
+lib/viewPreference.js   3D / simple view preference
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+There are no 3D model files: the car, buildings and landscape are all generated
+in code, so the world is cheap to download and easy to restyle.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Adding a new kind of building
+
+1. Add its parking distance and collision shapes to
+   `components/world/buildingData.js`.
+2. Add a component for it in `components/world/Buildings.js` and register it in
+   the `BUILDINGS` map there.
+3. Use its key as `location.building` in a page's front-matter.
+
+## Deployment
+
+The site is exported as static HTML (`output: 'export'`) and deployed on
+Netlify; `netlify.toml` sets the build command and publish directory (`out`).
+
+The contact form uses [Netlify Forms](https://docs.netlify.com/forms/setup/).
+Netlify detects it by finding `data-netlify="true"` in the exported
+`contact.html`, so the form in `components/ContactForm.js` must stay
+server-rendered. Submissions redirect to `/success`.

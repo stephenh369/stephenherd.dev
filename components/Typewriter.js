@@ -1,43 +1,68 @@
-import React, { useState, useEffect, useCallback } from 'react'
+'use client'
 
-export default function Typewriter() {
-  const [typing, setTyping] = useState('')
-  const [words, setWords] = useState(['using custom code.', 'with WordPress.', 'for E-Commerce.'])
-  const [index, setIndex] = useState(0)
-  const [letterIndex, setLetterIndex] = useState(0)
- 
-  const handleClear = () => {
-     setLetterIndex(0)
-     if(index === words.length -1) {
-       setIndex(0)
-       setTyping(typing => typing = '')
-     } else setIndex(index + 1)
-  }
- 
-  const handleTyping = useCallback(() => {
-   if(letterIndex < words[index].length) {
-     setTimeout(() => {
-       if (letterIndex === 0) {
-         setTyping(prevState => words[index].charAt(letterIndex))
-       } else {
-         setTyping(prevState => [...prevState, words[index].charAt(letterIndex)])
-       }
-       setLetterIndex(letterIndex + 1)
-     }, 200)
-   } else {
-     setTimeout(() => {
-       handleClear()
-     }, 2000)
-   } 
- }, [index, letterIndex])
- 
+import { useEffect, useState } from 'react'
+
+const TYPE_MS = 110
+const HOLD_MS = 2000
+
+/**
+ * Types each phrase in turn after a fixed prefix. Screen readers get the whole
+ * sentence once instead of a stream of single letters, and visitors who prefer
+ * reduced motion see the phrases without animation.
+ */
+export default function Typewriter({ prefix, phrases = [], className = '' }) {
+  const [reducedMotion, setReducedMotion] = useState(false)
+  const [phraseIndex, setPhraseIndex] = useState(0)
+  const [length, setLength] = useState(0)
+
   useEffect(() => {
-    handleTyping()
- }, [handleTyping])
+    const query = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const update = () => setReducedMotion(query.matches)
+    update()
+    query.addEventListener('change', update)
+    return () => query.removeEventListener('change', update)
+  }, [])
+
+  const phrase = phrases[phraseIndex] ?? ''
+
+  useEffect(() => {
+    if (reducedMotion || phrases.length === 0) return
+    const typing = length < phrase.length
+    const timer = setTimeout(
+      () => {
+        if (typing) {
+          setLength(length + 1)
+        } else {
+          setPhraseIndex((phraseIndex + 1) % phrases.length)
+          setLength(0)
+        }
+      },
+      typing ? TYPE_MS : HOLD_MS
+    )
+    return () => clearTimeout(timer)
+  }, [reducedMotion, phrases.length, phrase, phraseIndex, length])
+
+  if (phrases.length === 0) return null
+
+  const cleaned = phrases.map((item) => item.replace(/\.$/, ''))
+  const sentence = `${prefix} ${
+    cleaned.length > 1 ? `${cleaned.slice(0, -1).join(', ')} and ${cleaned.at(-1)}` : cleaned[0]
+  }.`
 
   return (
-    <div className="h-20 xs:h-8 md:h-full mb-2 xs:mb-4">
-      <h3>I can build websites <span className="text-blue-400">{typing}</span><span className="animate-cursor text-blue-400">|</span></h3>
-    </div>
+    <p className={className}>
+      <span className="sr-only">{sentence}</span>
+      <span aria-hidden="true">
+        {prefix}{' '}
+        {reducedMotion ? (
+          <span className="text-blue-300">{sentence.slice(prefix.length + 1)}</span>
+        ) : (
+          <>
+            <span className="text-blue-300">{phrase.slice(0, length)}</span>
+            <span className="animate-cursor text-blue-300">|</span>
+          </>
+        )}
+      </span>
+    </p>
   )
 }

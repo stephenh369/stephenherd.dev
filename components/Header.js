@@ -1,32 +1,18 @@
-import Nav from './Nav'
-import NavMobile from './NavMobile'
-import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import NavMenu from './NavMenu'
 
-export default function Header() {
-
-  const [scrollY, setScrollY] = useState(0)
-
-  useEffect(() => {
-    const options = { passive: true }
-    const scroll = () => {
-     const { pageYOffset } = window
-      setScrollY(pageYOffset)
-    }
-    document.addEventListener("scroll", scroll, options);
-    () => document.removeEventListener("scroll", scroll, options)
-   }, [])
-
-
+/**
+ * Site-wide header. It sits above every page, including the 3D world, so the
+ * plain links in the menu are always available as a way to reach any page
+ * without driving there.
+ */
+export default function Header({ pages }) {
   return (
-    <>
-    <header className={`${scrollY > 300 ? "bg-gray-900 + bg-opacity-50" : ""} fixed top-0 left-0 z-50 w-full flex items-center justify-between py-2 px-10 md:px-20`}>
-      <Link href="/"><a className="p-0"><h1 className="py-2"><span className="text-blue-400">sh</span>.dev</h1></a></Link>
-      <Nav/>
+    <header className="fixed inset-x-0 top-0 z-50 flex h-16 items-center justify-between bg-navy-800/75 px-5 backdrop-blur-sm md:px-10">
+      <Link href="/" className="text-3xl font-bold tracking-tight" aria-label="sh.dev home">
+        <span className="text-blue-400">sh</span>.dev
+      </Link>
+      <NavMenu pages={pages} />
     </header>
-    <header className="md:hidden w-full fixed top-24 right-0 z-50 text-right">
-      <NavMobile/>
-    </header>
-    </>
-  );
+  )
 }
