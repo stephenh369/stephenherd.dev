@@ -4,7 +4,7 @@
  * form (it works without JavaScript and posts straight to /success).
  */
 export default function ContactForm() {
-  const field = 'w-full rounded-lg border border-white/30 bg-transparent px-3 py-2 text-white focus:border-green-500'
+  const field = 'w-full rounded-lg border border-white/30 bg-transparent px-3 py-2 text-white focus:border-blue-400'
   return (
     <form
       className="glass grid gap-6 p-6 md:p-10"

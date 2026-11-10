@@ -31,7 +31,7 @@ export default function SimpleView({ home, pages, state = 'ready', notice, onEnt
               <li key={page.slug}>
                 <Link href={page.href} className="glass link-card flex h-full items-center justify-between gap-6 p-6">
                   <span>
-                    <span className="block text-xl font-semibold text-green-500">{page.title}</span>
+                    <span className="block text-xl font-semibold text-blue-400">{page.title}</span>
                     {page.description ? <span className="block pt-2 text-white/80">{page.description}</span> : null}
                   </span>
                   <span aria-hidden="true">&rarr;</span>

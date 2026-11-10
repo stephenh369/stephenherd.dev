@@ -32,7 +32,7 @@ function VideoCard({ video, featured }) {
           <PlayBadge />
         </span>
         <span className={`flex flex-1 flex-col justify-between gap-2 ${featured ? 'p-6' : 'p-4'}`}>
-          <h3 className={`font-semibold text-green-500 ${featured ? 'text-2xl lg:text-3xl' : 'text-base'}`}>{video.title}</h3>
+          <h3 className={`font-semibold text-blue-400 ${featured ? 'text-2xl lg:text-3xl' : 'text-base'}`}>{video.title}</h3>
           <span className="text-sm text-white/70">
             {featured ? 'Latest video · ' : ''}
             <time dateTime={video.published}>{formatDate(video.published)}</time>
@@ -67,7 +67,7 @@ function Channel({ channel }) {
     <section aria-labelledby={headingId}>
       <div className="flex flex-wrap items-end justify-between gap-4 pb-6">
         <div className="max-w-2xl">
-          <h2 id={headingId} className="text-3xl text-green-500">
+          <h2 id={headingId} className="text-3xl text-blue-400">
             {channel.name}
           </h2>
           {channel.description ? <p className="pt-2 text-white/80">{channel.description}</p> : null}

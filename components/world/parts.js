@@ -206,7 +206,7 @@ export function FloatingLabel({ title, subtitle, height = 2.5, ...props }) {
     ctx.translate(4, 4)
 
     ctx.fillStyle = 'rgba(19, 21, 26, 0.92)'
-    ctx.strokeStyle = '#22c55e'
+    ctx.strokeStyle = '#60a5fa'
     ctx.lineWidth = 3 * scale
     roundedRect(ctx, 0, 0, boxWidth, boxHeight, 18 * scale)
     ctx.fill()
@@ -216,14 +216,14 @@ export function FloatingLabel({ title, subtitle, height = 2.5, ...props }) {
     ctx.lineTo(boxWidth / 2, boxHeight + pointer)
     ctx.lineTo(boxWidth / 2 + pointer, boxHeight - 1)
     ctx.closePath()
-    ctx.fillStyle = '#22c55e'
+    ctx.fillStyle = '#60a5fa'
     ctx.fill()
 
     ctx.textAlign = 'center'
     ctx.textBaseline = 'middle'
     if (sub) {
       ctx.font = subFont
-      ctx.fillStyle = '#4ade80'
+      ctx.fillStyle = '#93c5fd'
       if ('letterSpacing' in ctx) ctx.letterSpacing = `${2 * scale}px`
       ctx.fillText(sub, boxWidth / 2, 30 * scale)
       if ('letterSpacing' in ctx) ctx.letterSpacing = '0px'

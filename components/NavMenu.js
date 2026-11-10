@@ -52,8 +52,8 @@ export default function NavMenu({ pages }) {
                 href={page.href}
                 aria-current={isCurrent(page.href) ? 'page' : undefined}
                 onClick={() => setOpen(false)}
-                className={`block rounded-lg px-4 py-2 transition-colors hover:text-green-500 aria-[current=page]:text-green-500 md:px-4 ${
-                  last ? 'md:ml-2 md:bg-green-500 md:font-semibold md:text-black md:hover:bg-green-400 md:hover:text-black md:aria-[current=page]:text-black' : ''
+                className={`block rounded-lg px-4 py-2 transition-colors hover:text-blue-400 aria-[current=page]:text-blue-400 md:px-4 ${
+                  last ? 'md:ml-2 md:bg-blue-400 md:font-semibold md:text-black md:hover:bg-blue-300 md:hover:text-black md:aria-[current=page]:text-black' : ''
                 }`}
               >
                 {page.title}

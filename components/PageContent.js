@@ -33,7 +33,7 @@ export default function PageContent({ entry }) {
         {tags?.length ? (
           <ul className="flex flex-wrap gap-2" aria-label="Skills">
             {tags.map((tag) => (
-              <li key={tag} className="rounded-full bg-green-500/10 px-3 py-1 text-sm font-semibold text-green-400 ring-1 ring-green-500/50">
+              <li key={tag} className="rounded-full bg-blue-400/10 px-3 py-1 text-sm font-semibold text-blue-300 ring-1 ring-blue-400/50">
                 {tag}
               </li>
             ))}

@@ -8,14 +8,14 @@ function Rows({ items }) {
       {items.map((item) => (
         <li
           key={item.slug}
-          className="glass flex flex-col items-center gap-8 border-l-4 border-green-500 p-8 lg:flex-row lg:p-10"
+          className="glass flex flex-col items-center gap-8 border-l-4 border-blue-400 p-8 lg:flex-row lg:p-10"
           style={{ borderLeftColor: item.colour }}
         >
           <div className="shrink-0 text-center lg:w-56">
             {item.image ? (
               <img className="mx-auto max-h-44 w-auto" src={item.image} alt={item.imageAlt ?? ''} loading="lazy" />
             ) : null}
-            <h2 className="pt-4 text-green-500">{item.title}</h2>
+            <h2 className="pt-4 text-blue-400">{item.title}</h2>
           </div>
           <Markdown>{item.body}</Markdown>
         </li>
@@ -33,14 +33,14 @@ function Cards({ items, basePath, itemPages }) {
           <>
             {item.image ? (
               <img
-                className="aspect-video w-full border-b-4 border-green-500 object-cover object-top"
+                className="aspect-video w-full border-b-4 border-blue-400 object-cover object-top"
                 style={{ borderBottomColor: item.colour }}
                 src={item.image}
                 alt={item.imageAlt ?? ''}
                 loading="lazy"
               />
             ) : null}
-            <h2 className="px-4 py-4 text-center text-xl text-green-500">{item.title}</h2>
+            <h2 className="px-4 py-4 text-center text-xl text-blue-400">{item.title}</h2>
           </>
         )
         return (

@@ -8,7 +8,7 @@ import { CAMERA_OFFSET } from './Car'
 import { WORLD } from './layout'
 
 const panel = 'glass-solid'
-const pill = `${panel} px-4 py-2 text-sm font-semibold transition-colors hover:bg-green-500 hover:text-black`
+const pill = `${panel} px-4 py-2 text-sm font-semibold transition-colors hover:bg-blue-400 hover:text-black`
 const key = 'rounded border border-white/40 bg-white/10 px-1.5 py-0.5 font-mono text-xs'
 
 function useMediaQuery(query) {
@@ -32,7 +32,7 @@ export function IntroCard({ home, touch, onStart, onSimpleView }) {
       aria-labelledby="intro-title"
       className={`${panel} pointer-events-auto w-full max-w-md animate-rise p-5 md:p-6`}
     >
-      <h1 id="intro-title" className="text-2xl text-green-500 md:text-3xl">
+      <h1 id="intro-title" className="text-2xl text-blue-400 md:text-3xl">
         {home.title}
       </h1>
       <Terminal className="mt-4">
@@ -92,7 +92,7 @@ export function ArrivalPrompt({ location, onOpen, onDismiss }) {
       className={`${panel} pointer-events-auto w-full max-w-md animate-rise p-5 text-center`}
     >
       <p className="text-sm font-semibold tracking-widest text-white/60 uppercase">You have arrived</p>
-      <h2 id="arrival-title" className="pt-1 text-green-500">
+      <h2 id="arrival-title" className="pt-1 text-blue-400">
         {location.name}
       </h2>
       <div className="flex flex-wrap items-center justify-center gap-3 pt-4">
@@ -151,7 +151,7 @@ function HoldButton({ label, onChange, children }) {
     <button
       type="button"
       aria-label={label}
-      className={`${panel} flex h-16 w-16 touch-none items-center justify-center text-2xl select-none active:bg-green-500 active:text-black`}
+      className={`${panel} flex h-16 w-16 touch-none items-center justify-center text-2xl select-none active:bg-blue-400 active:text-black`}
       onPointerDown={(event) => {
         event.currentTarget.setPointerCapture(event.pointerId)
         onChange(true)

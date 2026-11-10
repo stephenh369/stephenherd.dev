@@ -100,11 +100,11 @@ function ParkingSpot({ location }) {
       </mesh>
       <mesh ref={ring} rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.16, 0]}>
         <ringGeometry args={[WORLD.padRadius - 0.75, WORLD.padRadius - 0.25, 40]} />
-        <meshBasicMaterial color="#22c55e" transparent opacity={0.95} polygonOffset polygonOffsetFactor={-6} polygonOffsetUnits={-6} />
+        <meshBasicMaterial color="#60a5fa" transparent opacity={0.95} polygonOffset polygonOffsetFactor={-6} polygonOffsetUnits={-6} />
       </mesh>
       <mesh ref={gem} position={[0, 3.4, 0]} scale={[0.7, 1, 0.7]}>
         <octahedronGeometry args={[0.8, 0]} />
-        <Mat color="#22c55e" glow={0.8} />
+        <Mat color="#60a5fa" glow={0.8} />
       </mesh>
     </group>
   )

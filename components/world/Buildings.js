@@ -234,7 +234,7 @@ function DriveIn() {
       <group position={[0.08, 6.4, 0.46]} rotation={[0, 0, Math.PI / 2]}>
         <Cyl args={[0.9, 0.9, 0.08, 3]} color="#ffffff" glow={0.6} rotation={[Math.PI / 2, 0, 0]} shadow={false} />
       </group>
-      <SignBoard text="DRIVE-IN" width={5} height={1} color="#16181c" textColor="#22c55e" position={[0, 10.75, 0.1]} />
+      <SignBoard text="DRIVE-IN" width={5} height={1} color="#16181c" textColor="#60a5fa" position={[0, 10.75, 0.1]} />
       {/* Projection booth */}
       <group position={[9.2, 0, 5]}>
         <Block size={[3, 2.6, 3]} color="#f3efe6" position={[0, 1.3, 0]} />

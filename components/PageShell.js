@@ -7,12 +7,12 @@ export default function PageShell({ title, eyebrow, backHref = '/', backLabel = 
     <>
       <main id="main" tabIndex={-1} className="min-h-dvh px-6 pt-28 pb-16 outline-none md:px-20">
         <div className="mx-auto max-w-5xl">
-          <Link href={backHref} className="inline-flex items-center gap-2 text-xl text-green-500 transition-colors hover:text-white">
+          <Link href={backHref} className="inline-flex items-center gap-2 text-xl text-blue-400 transition-colors hover:text-white">
             <span aria-hidden="true">&larr;</span> {backLabel}
           </Link>
           <header className="pt-10 pb-8">
             {eyebrow ? <p className="pb-2 text-sm font-semibold tracking-widest text-white/60 uppercase">{eyebrow}</p> : null}
-            <h1 className="text-green-500 lg:text-5xl">{title}</h1>
+            <h1 className="text-blue-400 lg:text-5xl">{title}</h1>
           </header>
           {children}
         </div>
