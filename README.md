@@ -37,8 +37,8 @@ needed to edit copy, add a page, add a project or add a place to the map. See
 
 The 3D world is an enhancement, never the only way in:
 
-- **Calls to action** – the header on each content page links to the portfolio
-  and contact form. Every page is also listed in the simple view.
+- **Calls to action** – every content page links to the portfolio and contact
+  form beside its back link. Every page is also listed in the simple view.
 - **Simple view** – a plain home page (intro plus a list of links). It is what
   is served as HTML, so it works without JavaScript. It is used automatically
   when WebGL is unavailable or the visitor prefers reduced motion, and anyone
@@ -57,7 +57,7 @@ session, so coming back from a page puts you where you parked.
 
 ```
 app/                    Routes: home, /[slug] pages, /[slug]/[item] collection items
-components/             Page templates (header, Markdown, contact form, lists)
+components/             Page templates (page shell, Markdown, contact form, lists)
 components/home/        Home page: picks 3D world or simple view
 components/world/       The 3D world
   layout.js             Pure data: terrain heights, roads, parking spots, colliders, scenery

@@ -34,7 +34,7 @@ export default async function Page({ params }) {
   const channels = page.videos ? await getVideoFeeds(page.videos) : null
 
   return (
-    <PageShell title={page.heading ?? page.title} eyebrow={page.location?.name}>
+    <PageShell title={page.heading ?? page.title} eyebrow={page.location?.name} current={`/${page.slug}`}>
       <div className="grid gap-10">
         {Form ? <Form /> : null}
         <PageContent entry={page} />
