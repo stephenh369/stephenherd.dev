@@ -37,8 +37,8 @@ needed to edit copy, add a page, add a project or add a place to the map. See
 
 The 3D world is an enhancement, never the only way in:
 
-- **Main menu** – ordinary links to every page, present on every screen
-  including the 3D world.
+- **Calls to action** – the header on each content page links to the portfolio
+  and contact form. Every page is also listed in the simple view.
 - **Simple view** – a plain home page (intro plus a list of links). It is what
   is served as HTML, so it works without JavaScript. It is used automatically
   when WebGL is unavailable or the visitor prefers reduced motion, and anyone

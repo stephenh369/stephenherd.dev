@@ -1,20 +1,19 @@
 import Link from 'next/link'
-import NavMenu from './NavMenu'
+import HeaderCtas from './HeaderCtas'
 
 /**
- * Site-wide header. It sits above every page, including the 3D world, so the
- * plain links in the menu are always available as a way to reach any page
- * without driving there.
+ * Site-wide header for the content pages: the logo and two calls to action in
+ * place of the old menu. Every page stays reachable from the simple view.
  */
-export default function Header({ pages }) {
+export default function Header() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 h-16 bg-background/70 px-6 shadow-primary backdrop-blur-sm md:px-20">
       {/* Lines up with the page content beneath it. */}
       <div className="mx-auto flex h-full max-w-5xl items-center justify-between">
-        <Link href="/" className="text-3xl font-bold tracking-tight" aria-label="sh.dev home">
+        <Link href="/" className="text-2xl font-bold tracking-tight md:text-3xl" aria-label="sh.dev home">
           <span className="text-blue-400">sh</span>.dev
         </Link>
-        <NavMenu pages={pages} />
+        <HeaderCtas />
       </div>
     </header>
   )

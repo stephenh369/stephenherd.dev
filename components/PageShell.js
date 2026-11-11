@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import Footer from './Footer'
 import Header from './Header'
-import { getNavPages } from '@/lib/content'
 
 /** Shared frame for every content page: back link, heading, content, footer. */
 export default function PageShell({ title, eyebrow, backHref = '/', backLabel = 'Back to home', children }) {
@@ -9,7 +8,7 @@ export default function PageShell({ title, eyebrow, backHref = '/', backLabel = 
   // bottom of the screen, and long pages keep one consistent gap above it.
   return (
     <div className="flex min-h-dvh flex-col">
-      <Header pages={getNavPages()} />
+      <Header />
       <main id="main" tabIndex={-1} className="flex-1 px-6 pt-24 pb-12 outline-none md:px-20">
         <div className="mx-auto max-w-5xl">
           <Link href={backHref} className="inline-flex items-center gap-2 text-xl text-blue-400 transition-colors hover:text-white">

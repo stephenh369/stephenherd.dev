@@ -1,11 +1,12 @@
 ---
 title: Stephen Herd - Software Engineer
 typewriter:
-  prefix: I can build websites
+  prefix: I am a
   phrases:
-    - using custom code.
-    - with WordPress.
-    - for E-Commerce.
+    - software developer
+    - content creator
+    - car and motorcycle enthusiast
+    - sim racer
 location:
   name: Home
   building: home

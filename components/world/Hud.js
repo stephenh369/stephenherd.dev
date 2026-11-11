@@ -49,7 +49,7 @@ export function IntroCard({ home, touch, onStart, onSimpleView }) {
             <kbd className={key}>S</kbd> <kbd className={key}>D</kbd>. Park at a location to open its page.
           </>
         )}{' '}
-        Prefer not to drive? Use the menu above, or switch to the simple view.
+        Prefer not to drive? Switch to the simple view.
       </p>
       <div className="flex flex-wrap gap-3 pt-5">
         <button type="button" onClick={onStart} className="btn px-5 py-2">
